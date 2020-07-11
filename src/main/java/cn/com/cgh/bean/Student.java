@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Service
 public class Student implements Serializable {
+
     private String name = "cgh";
     private int age = 25;
 
