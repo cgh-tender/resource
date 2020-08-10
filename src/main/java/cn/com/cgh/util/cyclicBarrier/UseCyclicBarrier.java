@@ -5,6 +5,7 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * <p> barrier 有 4 个线程 
+ * <p> 统计
  * @author Haidar
  * @date 2020/8/10 17:31
  **/
