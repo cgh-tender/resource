@@ -5,17 +5,22 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
+/**
+ * <p>
+ * @author Haidar
+ * @date 2020/8/11 11:39
+ **/
 public class UseFuture {
     static class MyFuture implements Callable<Integer>{
         @Override
         public Integer call() throws Exception {
             int num = 0;
             try {
-                Thread.sleep(1000);
                 for (int i = 0;i <= 200 ; i++){
                     if (Thread.currentThread().isInterrupted()){
                         return null;
                     }
+                    System.out.println(String.format("i = %d , num = %d",i, num));
                     num += i;
                 }
             } catch (Exception e) {
@@ -32,7 +37,7 @@ public class UseFuture {
         new Thread(task).start();
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(10);
             Random r = new Random();
             int i = r.nextInt(100);
             System.out.println(i);

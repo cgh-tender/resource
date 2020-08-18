@@ -7,8 +7,15 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="cn.com.cgh"/>
-    <bean id="student" class="cn.com.cgh.bean.Student"/>
-    <import resource="spring-*.xml"/>
+
+    <bean id="solrBuilder" class="org.apache.solr.client.solrj.impl.HttpSolrClient.Builder">
+        <constructor-arg name="baseSolrUrl" value="http://solr.com:8983/solr"/>
+    </bean>
+    <bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrClient">
+        <constructor-arg name="builder" ref="solrBuilder" />
+    </bean>
+    <bean id="solrTemplate" class="org.springframework.data.solr.core.SolrTemplate">
+        <constructor-arg ref="solrServer" />
+    </bean>
 
 </beans>
