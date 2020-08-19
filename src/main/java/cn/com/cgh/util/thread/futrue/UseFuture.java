@@ -1,4 +1,4 @@
-package cn.com.cgh.util.futrue;
+package cn.com.cgh.util.thread.futrue;
 
 import java.util.Random;
 import java.util.concurrent.Callable;
@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * <p>
+ * <p> 用的多的方式
  * @author Haidar
  * @date 2020/8/11 11:39
  **/

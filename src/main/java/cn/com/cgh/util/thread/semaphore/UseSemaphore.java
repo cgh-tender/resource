@@ -1,4 +1,4 @@
-package cn.com.cgh.util.semaphore;
+package cn.com.cgh.util.thread.semaphore;
 
 /**
  * <p> 控流

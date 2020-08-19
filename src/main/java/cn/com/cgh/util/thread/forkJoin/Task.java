@@ -1,4 +1,4 @@
-package cn.com.cgh.util.forkJoin;
+package cn.com.cgh.util.thread.forkJoin;
 
 import java.util.concurrent.RecursiveTask;
 

@@ -1,4 +1,4 @@
-package cn.com.cgh.util.exchange;
+package cn.com.cgh.util.thread.exchange;
 
 /**
  * <p> 交换两个线程的内容

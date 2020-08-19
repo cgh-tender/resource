@@ -1,11 +1,11 @@
-package cn.com.cgh.util.cyclicBarrier;
+package cn.com.cgh.util.thread.cyclicBarrier;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CyclicBarrier;
 
 /**
  * <p> barrier 有 4 个线程 
- * <p> 统计
+ * <p> 统计/汇总
  * @author Haidar
  * @date 2020/8/10 17:31
  **/

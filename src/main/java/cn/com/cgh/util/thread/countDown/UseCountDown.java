@@ -1,4 +1,4 @@
-package cn.com.cgh.util.countDown;
+package cn.com.cgh.util.thread.countDown;
 
 import java.util.concurrent.CountDownLatch;
 
