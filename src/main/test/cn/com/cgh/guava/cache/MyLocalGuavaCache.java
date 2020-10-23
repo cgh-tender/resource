@@ -14,18 +14,22 @@ import java.util.function.Function;
 
 public class MyLocalGuavaCache {
     static {
-        LoadingCache<String, Object> builder = CacheBuilder.newBuilder()
-                .build(new CacheLoader<String, Object>() {
-            @Override
-            public Object load(String key) throws Exception {
-                return null;
-            }
-        });
+        CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder();
+
         RemovalListener<String,Object> removalListener = RemovalListeners.asynchronous(removalNotification -> {
             Object value = removalNotification.getValue();
             System.out.println(value);
             System.out.println(removalNotification.toString());
         }, Executors.newSingleThreadExecutor());
+
+        LoadingCache<String, Object> build = builder.removalListener(removalListener)
+                .build(new CacheLoader<String, Object>() {
+                    @Override
+                    public Object load(String key) throws Exception {
+                        return null;
+                    }
+                });
+
     }
     private static ThreadPoolTaskExecutor executor;
 

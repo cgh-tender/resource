@@ -1,10 +1,5 @@
 package cn.com.cgh.bean;
 
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
-import org.wltea.analyzer.lucene.IKAnalyzer;
-
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.regex.Pattern;

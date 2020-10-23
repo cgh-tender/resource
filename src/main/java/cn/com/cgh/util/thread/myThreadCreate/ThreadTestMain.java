@@ -13,16 +13,19 @@ public class ThreadTestMain {
         RejectedExecutionHandler abortPolicy = new ThreadPoolExecutor.AbortPolicy();
 
         LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>(1);
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 1,
-                1000,TimeUnit.MINUTES, queue,
-                factoryBean, abortPolicy);
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1,
+                1,
+                1000,TimeUnit.MINUTES,
+                queue,
+                factoryBean,
+                abortPolicy);
         threadPoolExecutor.execute(()->{
             throw new RuntimeException("new Test");
         });
         threadPoolExecutor.execute(()->{
             throw new RuntimeException("new Test");
         });
-        threadPoolExecutor.shutdown();
+//        threadPoolExecutor.shutdown();
 
     }
 }
