@@ -1,5 +1,8 @@
 package cn.com.cgh.util.bit.per;
 
+/**
+ * 可以进行当做为属性以及权限来进行做为控制
+ */
 public class Permission {
     private static final int ALL_SELECT = 2<<0;
     private static final int ALL_INSERT = 2<<1;
