@@ -1,5 +1,6 @@
 package cn.com.cgh.config.solr;
 
+import lombok.Data;
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.solr.core.mapping.Dynamic;
 
@@ -11,6 +12,7 @@ import java.util.Map;
  * @author Haidar
  * @date 2020/8/14 14:30
  **/
+@Data
 public class Item implements Serializable {
     private static final long serialVersionUID = 5516075349620653480L;
     /**
@@ -68,85 +70,36 @@ public class Item implements Serializable {
     @Field(value = "item_spec_*")
     private Map<String,String> specMap;
 
+    private String fname;
+    private String size;
+    private String fileLastModified;
+    private String fileDir;
+    private String url;
+    private String content_type;
+    private String content;
+    private String fileType;
+    private String xxxx;
+    private String ddd;
+    private Word word;
+
+    public void setFname(String fname) {
+        this.fname = fname;
+        this.fileType = fname.split(".")[1];
+    }
+
+    @Field("aa*")
+    private String aaReg;
+
     /**
      *用来存储高亮数据
      */
     private String tempHighLightData ;
 
-    public void setTempHighLightData(String tempHighLightData) {
-        this.tempHighLightData = tempHighLightData;
-    }
 
-    public String getTempHighLightData() {
-        return tempHighLightData;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getSeller() {
-        return seller;
-    }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
-    public Map<String, String> getSpecMap() {
-        return specMap;
-    }
-
-    public void setSpecMap(Map<String, String> specMap) {
-        this.specMap = specMap;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", brand='" + brand + '\'' +
-                ", seller='" + seller + '\'' +
-                ", specMap=" + specMap +
-                '}';
-    }
+}
+@Data
+class Word implements Serializable{
+    private String author;
+    private String title;
+    private String text;
 }
