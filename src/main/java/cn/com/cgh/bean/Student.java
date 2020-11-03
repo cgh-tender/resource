@@ -2,6 +2,8 @@ package cn.com.cgh.bean;
 
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.Serializable;
 
 @Service
@@ -24,5 +26,13 @@ public class Student implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    @PostConstruct
+    public void start(){
+
+    }
+    @PreDestroy
+    public void preDestory(){
+
     }
 }
