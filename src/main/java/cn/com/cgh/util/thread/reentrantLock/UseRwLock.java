@@ -1,5 +1,6 @@
 package cn.com.cgh.util.thread.reentrantLock;
 
+import com.jcraft.jsch.jce.HMACSHA256;
 import com.nimbusds.jose.util.Base64URL;
 
 import java.util.concurrent.locks.Lock;

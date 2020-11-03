@@ -79,6 +79,15 @@
           <artifactId>solr-solrj</artifactId>
           <version>${solrj.version}</version>
       </dependency>
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>25.1-android</version>
+      </dependency>
+      <dependency>
+          <groupId>io.dropwizard.metrics</groupId>
+          <artifactId>metrics-core</artifactId>
+      </dependency>
 <!--      <dependency>-->
 <!--          <groupId>org.apache.httpcomponents</groupId>-->
 <!--          <artifactId>httpmime</artifactId>-->
