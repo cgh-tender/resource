@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.Serializable;
 
-@Service
+@Service("student1")
 public class Student implements Serializable {
 
     private String name = "cgh";

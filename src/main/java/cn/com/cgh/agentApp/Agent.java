@@ -1,4 +1,4 @@
-package cn.com.cgh.agent;
+package cn.com.cgh.agentApp;
 
 import javassist.*;
 
@@ -9,6 +9,7 @@ import java.security.ProtectionDomain;
 
 /**
  * @author root
+ * 字结码进行动态代理
  */
 public class Agent implements ClassFileTransformer {
     @Override

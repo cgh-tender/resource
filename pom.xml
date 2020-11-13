@@ -185,15 +185,11 @@
           <scope>test</scope>
       </dependency>
 
+      <!-- agent arthas -->
       <dependency>
           <groupId>org.javassist</groupId>
           <artifactId>javassist</artifactId>
           <version>3.24.0-GA</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-lang</groupId>
-          <artifactId>commons-lang</artifactId>
-          <version>2.1</version>
       </dependency>
       <dependency>
           <groupId>org.codehaus.plexus</groupId>
@@ -230,11 +226,11 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <version>2.4</version>
+            <version>3.1.2</version>
             <configuration>
                 <archive>
                     <manifestEntries>
-                        <Premain-Class>cn.com.cgh.agent.AgentApp</Premain-Class>
+                        <Premain-Class>cn.com.cgh.agentApp.AgentApp</Premain-Class>
                         <agentmain-Class>AgentApp</agentmain-Class>
                         <Can-Redefine-Classes>true</Can-Redefine-Classes>
                         <Can-Retransform-Classes>true</Can-Retransform-Classes>

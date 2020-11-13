@@ -18,15 +18,15 @@ import org.springframework.stereotype.Component;
 public class BeanDefinitionTest implements BeanDefinitionRegistryPostProcessor {
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
-        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-        beanDefinition.setBeanClass(Student.class);
-
-        beanDefinition.getConstructorArgumentValues().addGenericArgumentValue("");
-
-        MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
-        propertyValues.addPropertyValue("name","xxxx");
-
-        beanDefinitionRegistry.registerBeanDefinition("student",beanDefinition);
+//        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+//        beanDefinition.setBeanClass(Student.class);
+//
+//        beanDefinition.getConstructorArgumentValues().addGenericArgumentValue("");
+//
+//        MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
+//        propertyValues.addPropertyValue("name","xxxx");
+//
+//        beanDefinitionRegistry.registerBeanDefinition("student1",beanDefinition);
 
 
 //        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(beanDefinitionRegistry);
