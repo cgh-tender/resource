@@ -12,9 +12,9 @@ public class JVMObject {
         teacher.setAge(35);
         teacher.setName("Mark");
 
-        for (int i = 0; i < 16; i++) {
-            System.gc();
-        }
+//        for (int i = 0; i < 16; i++) {
+//            System.gc();
+//        }
 
         Teacher teacher1 = new Teacher();
         teacher1.setA("rewq");

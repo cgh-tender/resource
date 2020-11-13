@@ -2,8 +2,8 @@ package cn.com.cgh.util.thread.callback;
 
 
 import com.google.common.util.concurrent.*;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nullable;
 import java.util.concurrent.*;
 
 import static com.google.common.util.concurrent.Futures.addCallback;

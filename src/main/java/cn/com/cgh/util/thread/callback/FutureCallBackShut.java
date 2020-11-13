@@ -3,8 +3,8 @@ package cn.com.cgh.util.thread.callback;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFutureTask;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nullable;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
