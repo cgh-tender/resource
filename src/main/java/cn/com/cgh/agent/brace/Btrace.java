@@ -1,4 +1,4 @@
-package cn.com.cgh.attach.brace;
+package cn.com.cgh.agent.brace;
 
 import com.sun.btrace.AnyType;
 import com.sun.btrace.BTraceUtils;
