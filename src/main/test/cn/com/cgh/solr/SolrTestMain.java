@@ -28,6 +28,8 @@
 //
 //import java.io.IOException;
 //import java.io.Serializable;
+//import java.io.UnsupportedEncodingException;
+//import java.nio.charset.StandardCharsets;
 //import java.util.*;
 //import java.util.concurrent.CountDownLatch;
 //import java.util.concurrent.ExecutorService;
@@ -565,12 +567,13 @@
 //
 //        query.setParam("entity","fileImportTofileName");
 //        query.setParam("command","full-import");
+//        query.setParam("core",collection);
 //        query.setParam("verbose",true);
 //        query.setParam("clean",false);
 //        query.setParam("commit",true);
-//        query.setParam("fileName","11111.xlsx");
+//        query.setParam("fileName", "20200814.xlsx");
 //        try {
-//            solrClient.query(query);
+//            System.out.println(solrClient.query(query));
 //        } catch (SolrServerException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {

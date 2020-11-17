@@ -13,13 +13,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
+import java.util.zip.*;
 
 /**
  * 文件操作类
@@ -38,17 +34,34 @@ import java.util.stream.Collectors;
  * @see FileUtil#saveFileAndGetUrl(MultipartFile[], String) 保存文件到那个目录
  * @see FileUtil#saveFileAndGetUrl(MultipartFile, String, String) 保存文件到目录下并且指定是否修改名称
  * @see FileUtil#isExcel(File) 是否是Word
+ * @see FileUtil#isExcel(InputStream, boolean)  是否是Word,是否关闭文件流
+ * @see FileUtil#isExcel(String) 是否是Word
  * @see FileUtil#isImage(File) 是否是图片
+ * @see FileUtil#isImage(InputStream, boolean) 是否是图片,是否关闭文件流
+ * @see FileUtil#isImage(String) 是否是图片
  * @see FileUtil#isZip(File) 是否是压缩包
+ * @see FileUtil#isZip(InputStream, boolean) 是否是压缩包,是否关闭文件流
+ * @see FileUtil#isZip(String) 是否是压缩包
+ * @see FileUtil#zip(Collection, String, String, boolean) 压缩
  */
 public class FileUtil {
     private final static Logger logg = LoggerFactory.getLogger(FileUtil.class);
-    private final static CopyOnWriteArrayList<String> IMAGE
-            = new CopyOnWriteArrayList<>(Arrays.asList("image/jpeg", "image/png"));
     public final static Map<String, String> IMAGE_TYPE_MAP = new ConcurrentHashMap<>();
     public final static Map<String, String> ZIP_TYPE_MAP = new ConcurrentHashMap<>();
     public final static Map<String, String> WORD_TYPE_MAP = new ConcurrentHashMap<>();
-    private static final String FILENAMESPLIT = "\\.";
+    /*是否包含 "." */
+    public static final String FILE_NAME_SEPARATOR = "\\.";
+    /*路径开头是否包含 文件分隔符 */
+    public static final String REG_START_GEX = "^["+File.separator+"|\\\\|/|\\s]+";
+    /*路径结束是否包含 文件分隔符 */
+    public static final String REG_END_SEPARATOR = "["+File.separator+"|\\\\|/|\\s]+$";
+    /*路径结束是否包含压缩文件格式 */
+    public static final String REG_END_ZIP = "\\.[zZ]{1}[iI]{1}[pP]{1}[\\s]?$";
+    /*压缩后缀*/
+    public static final String ZIP_END = ".zip";
+    /*匹配出文件分隔最后一级*/
+    public static final String FILE_NAME_LEVEL = "[\\\\|/|"+File.separator+"][^/\\\\]+$";
+
 
     static {
         IMAGE_TYPE_MAP.put("ffd8ffe", "jpg"); //JPEG (jpg)
@@ -185,8 +198,8 @@ public class FileUtil {
             if (StringUtils.isBlank(fileName)){
                 fileName = path.split(File.separator)[fileName.split(File.separator).length-1];
             }else {
-                if (!fileName.contains(FILENAMESPLIT)){
-                    String end = path.split(FILENAMESPLIT)[fileName.split(FILENAMESPLIT).length - 1];
+                if (!fileName.contains(FILE_NAME_SEPARATOR)){
+                    String end = path.split(FILE_NAME_SEPARATOR)[fileName.split(FILE_NAME_SEPARATOR).length - 1];
                     fileName = fileName + end;
                 }
             }
@@ -254,7 +267,7 @@ public class FileUtil {
                 }
             }else {
                 out = response.getOutputStream();;
-                FileUtil.getAndResizeImage(fis,out,size,path.split(FILENAMESPLIT)[1]);
+                FileUtil.getAndResizeImage(fis,out,size,path.split(FILE_NAME_SEPARATOR)[1]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -330,7 +343,7 @@ public class FileUtil {
             File file = new File(path);
             fis = new FileInputStream(file);
             OutputStream out = response.getOutputStream();
-            getAndResizeImage(fis,out,size,path.split(FILENAMESPLIT)[1]);
+            getAndResizeImage(fis,out,size,path.split(FILE_NAME_SEPARATOR)[1]);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -350,7 +363,7 @@ public class FileUtil {
             File file = new File(path);
             fis = new FileInputStream(file);
             OutputStream out = response.getOutputStream();
-            getAndResizeImage(fis,out,with,height,path.split(FILENAMESPLIT)[1]);
+            getAndResizeImage(fis,out,with,height,path.split(FILE_NAME_SEPARATOR)[1]);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -428,17 +441,12 @@ public class FileUtil {
      */
     public static String[] saveFileAndGetUrl(MultipartFile[] multipartFiles,String toPath){
         if (null != multipartFiles){
-            List<String> collect = Arrays.stream(multipartFiles)
-                    .parallel()
-                    .map(multipartFile -> saveFileAndGetUrl(multipartFile, toPath, null))
-                    .collect(Collectors.toList());
-            return collect.toArray(new String[collect.size()]);
-//            String[] paths = new String[multipartFiles.length];
-//            for (int i = 0; i < multipartFiles.length; i++) {
-//                String url = FileUtil.saveFileAndGetUrl(multipartFiles[i], toPath, null);
-//                paths[i] = url;
-//            }
-//            return paths;
+            String[] paths = new String[multipartFiles.length];
+            for (int i = 0; i < multipartFiles.length; i++) {
+                String url = FileUtil.saveFileAndGetUrl(multipartFiles[i], toPath, null);
+                paths[i] = url;
+            }
+            return paths;
         }
         return null;
     }
@@ -458,10 +466,10 @@ public class FileUtil {
                 toPath = toPath + File.separator + fileName;
             }else {
                 /*如果存在 . 则存在后缀*/
-                if (reName.contains(FILENAMESPLIT)){
+                if (reName.contains(FILE_NAME_SEPARATOR)){
                     toPath = toPath + File.separator + reName;
                 }else {
-                    String[] split = fileName.split(FILENAMESPLIT);
+                    String[] split = fileName.split(FILE_NAME_SEPARATOR);
                     if (split.length == 2){
                         end = "."+split[1];
                     }
@@ -481,6 +489,7 @@ public class FileUtil {
         }
         return null;
     }
+
     public static boolean isExcel(InputStream is,boolean isCloseIs){
         String byte50 = getFileByFileByte50(is,isCloseIs);
         Iterator<String> iterator = WORD_TYPE_MAP.keySet().iterator();
@@ -533,7 +542,7 @@ public class FileUtil {
         return false;
     }
 
-    public static boolean isImage(InputStream is, boolean isClose){
+    public static boolean isImage(InputStream is,boolean isClose){
         String byte50 = getFileByFileByte50(is,isClose);
         Iterator<String> iterator = IMAGE_TYPE_MAP.keySet().iterator();
         while (iterator.hasNext()){
@@ -562,9 +571,10 @@ public class FileUtil {
         byte[] b = new byte[50];
         try {
             is.read(b);
-            is.skip(-50);
             if (isClose){
                 is.close();
+            }else {
+                is.skip(-50);
             }
         }
         catch (FileNotFoundException e)
@@ -594,7 +604,7 @@ public class FileUtil {
         }
         return getFileHexString(b);
     }
-    public final static String getFileHexString(byte[] b)
+    private final static String getFileHexString(byte[] b)
     {
         StringBuilder stringBuilder = new StringBuilder();
         if (b == null || b.length <= 0)
@@ -613,5 +623,122 @@ public class FileUtil {
         }
         return stringBuilder.toString();
     }
-}
 
+    /**
+     * 压缩文件
+     * @param srcPath 指定文件集合
+     * @param toPath 压缩到指定目录
+     * @param toName 压缩成的目录
+     * @param deleteToPath 如果目录文件存在是否删除 缺省 删除
+     * @return 返回压缩后的目录
+     */
+    public static String zip(Collection<String> srcPath, String toPath, String toName, boolean deleteToPath){
+        CheckedOutputStream cos = null;
+        ZipOutputStream zos = null;
+        try {
+            if (srcPath == null || srcPath.isEmpty()){
+                throw new RuntimeException("zip()压缩路径为空");
+            }
+            /*路径处理*/
+            if(!toPath.contains(FILE_NAME_SEPARATOR)){
+                if (StringUtils.isBlank(toName)){
+                    toName = SnowFlake.nextId("");
+                }else {
+                    toName = toName.replaceAll(REG_END_ZIP,"");
+                }
+                toPath += File.separator + toName + ZIP_END;
+            }else {
+                toPath = toPath.replaceAll(REG_END_ZIP,ZIP_END);
+            }
+            String finalToPath = toPath.replaceAll(FILE_NAME_LEVEL,"");
+            srcPath
+                    .stream()
+                    .filter(path -> new File(path).isDirectory())
+                    .forEach(path->{
+                        if (path.equalsIgnoreCase(finalToPath)){
+                            throw new RuntimeException("目标路径不能在压缩目录下");
+                        }
+                    });
+
+            File file = new File(toPath);
+            if (file.exists() && deleteToPath){
+                file.delete();
+            }else if(file.exists()){
+                throw new RuntimeException("压缩目录已经存在 : " + toPath + " zip()deleteToPath set true");
+            }
+            cos = new CheckedOutputStream(new FileOutputStream(file), new CRC32());
+            zos = new ZipOutputStream(cos);
+            ZipOutputStream finalZos = zos;
+            srcPath.forEach(path->zip(path.replaceAll(FILE_NAME_LEVEL,""), new File(path), finalZos));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (zos != null){
+                try {
+                    zos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (cos != null){
+                try {
+                    cos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return toPath;
+
+    }
+    protected static void zip(String basePath,File srcFile,ZipOutputStream zos){
+        BufferedReader bis = null;
+        try {
+            if (srcFile.isFile()){
+                /*文件绝对路径*/
+                String filePath = srcFile.getAbsolutePath();
+                String subPath = filePath.replaceFirst("^"+basePath + File.separator, "");
+                ZipEntry entry = new ZipEntry(subPath);
+                zos.putNextEntry(entry);
+                bis = new BufferedReader(new FileReader(srcFile));
+                int c;
+                while((c = bis.read()) != -1){
+                    zos.write(c);
+                }
+            }else {
+                Arrays.stream(srcFile.listFiles()).forEach(file->zip(basePath, file, zos));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (bis!=null){
+                try {
+                    bis.close();
+                    zos.closeEntry();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+                    zip(Arrays.asList("/Users/cgh/Desktop/aaa/8014805722992410625",
+                    "/Users/cgh/Desktop/aaa/8014847339728273409/8014847341041090561.xlsx","/Users/cgh/Desktop/aaa"),
+                    "/Users/cgh/Desktop","aaa",
+                    true);
+//        for (int i = 0; i < 1000; i++) {
+//            zip(Arrays.asList("/Users/cgh/Desktop/aaa/8014805722992410625",
+//                    "/Users/cgh/Desktop/aaa/8014847339728273409/8014847341041090561.xlsx"),
+//                    "/Users/cgh/Desktop","aaa",
+//                    true);
+//        }
+
+//        try {
+//            Thread.sleep(Long.MAX_VALUE);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+}
