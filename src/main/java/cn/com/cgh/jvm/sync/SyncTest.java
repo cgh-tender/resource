@@ -1,28 +1,31 @@
 package cn.com.cgh.jvm.sync;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openjdk.jol.info.ClassLayout;
 
 /**
  * @author root
  * 000
  * 0 是否可以偏向 0 不可偏向 1 可偏向
- * 00 轻量锁
  * 01 偏向锁
- * 10 重量锁
+ * 00 轻量锁
+ * 10 重量锁 mutex 互斥量   pthread_create_t()创建Thread 互斥量（pthread_metex_t），自旋锁（pthread_spin_t 空转），信号量
  * 11 GC
+ * -XX:BiasedLockingStartupDelay=0
  */
-@Slf4j(topic = "SyncTest")
+@Log4j2(topic = "SyncTest")
 public class SyncTest {
-    public static Object object = new Object();
+    static L l = new L();
     public static void main(String[] args) {
-        log.info("1111111111");
+        log.info(Integer.toHexString(l.hashCode()));
         /*打印出 对象头地址*/
-//        System.out.println(ClassLayout.parseInstance(object).toPrintable());
-        synchronized (object){
-            System.out.println();
-            System.out.println(ClassLayout.parseInstance(object).toPrintable());
-
+        log.info(ClassLayout.parseInstance(l).toPrintable());
+        synchronized (l){
+            log.info(ClassLayout.parseInstance(l).toPrintable());
+            log.info(Long.toHexString(Thread.currentThread().getId()));
         }
+    }
+    private static class L{
+
     }
 }
