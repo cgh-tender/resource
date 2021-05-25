@@ -12,18 +12,20 @@ import org.openjdk.jol.info.ClassLayout;
  * 10 重量锁 mutex 互斥量   pthread_create_t()创建Thread 互斥量（pthread_metex_t），自旋锁（pthread_spin_t 空转），信号量
  * 11 GC
  * -XX:BiasedLockingStartupDelay=0
+ * -XX:-BiasedLocking
+ * -XX:+BiasedLocking
  */
 @Log4j2(topic = "SyncTest")
 public class SyncTest {
-    static L l = new L();
     public static void main(String[] args) {
-        log.info(Integer.toHexString(l.hashCode()));
+        L l = new L();
+//        log.info(Integer.toHexString(l.hashCode()));
         /*打印出 对象头地址*/
         log.info(ClassLayout.parseInstance(l).toPrintable());
         synchronized (l){
             log.info(ClassLayout.parseInstance(l).toPrintable());
-            log.info(Long.toHexString(Thread.currentThread().getId()));
         }
+        log.info(ClassLayout.parseInstance(l).toPrintable());
     }
     private static class L{
 

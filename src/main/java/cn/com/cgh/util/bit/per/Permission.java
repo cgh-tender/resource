@@ -35,7 +35,8 @@ public class Permission {
     }
 
     public static void main(String[] args) {
-//        Permission permission = new Permission();
+        Permission permission = new Permission();
+        System.out.println(permission.isAllow(ALL_INSERT));
 //        permission.addPermission(Permission.ALL_DELETE);
 //        permission.addPermission(Permission.ALL_DELETE);
 //        permission.addPermission(Permission.ALL_INSERT);
