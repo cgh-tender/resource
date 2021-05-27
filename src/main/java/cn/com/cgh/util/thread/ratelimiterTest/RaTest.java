@@ -10,7 +10,7 @@ public class RaTest {
 
     public static void main(String[] args) {
         RaTest raTest = new RaTest();
-        String a = "ab";
+        String a = "abc";
         System.out.println(a.getBytes().length);
         raTest.aaa(a.getBytes());
 
@@ -22,5 +22,6 @@ public class RaTest {
         rateLimiter.acquire(a.length);
         System.out.println(Duration.between(now,Instant.now()));
         System.out.println(rateLimiter.getRate());
+        System.out.println(Duration.between(now,Instant.now()));
     }
 }

@@ -25,7 +25,6 @@ public class Permission {
     public void disable(int permission){
         flag = flag&~permission;
     }
-
     public boolean isAllow(int permission){
         return (flag&permission)==permission;
     }
@@ -35,18 +34,13 @@ public class Permission {
     }
 
     public static void main(String[] args) {
-//        Permission permission = new Permission();
-//        permission.addPermission(Permission.ALL_DELETE);
-//        permission.addPermission(Permission.ALL_DELETE);
-//        permission.addPermission(Permission.ALL_INSERT);
-//        permission.disable(Permission.ALL_INSERT);
-//        System.out.println(permission.flag);
+        Permission permission = new Permission();
+        permission.addPermission(Permission.ALL_SELECT);
+        permission.addPermission(Permission.ALL_INSERT);
+        permission.addPermission(Permission.ALL_UPDATE);
+        permission.addPermission(Permission.ALL_DELETE);
+        System.out.println(permission.flag);
 
-        System.out.println(10&2);
-        System.out.println(ALL_SELECT);
-        System.out.println(ALL_INSERT);
-        System.out.println(ALL_UPDATE);
-        System.out.println(ALL_DELETE);
 
     }
 }
