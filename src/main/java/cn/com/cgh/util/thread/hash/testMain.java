@@ -1,10 +1,5 @@
 package cn.com.cgh.util.thread.hash;
 
-import org.apache.log4j.helpers.ThreadLocalMap;
-
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * hash 一般译做散列也有直接译为哈希的, 通过散列算法变换成固定他要和的输出该输入可能会散列成相同的输出
  * 所以不能把散列值确定唯一的输入值简单的说就是一种将任意他要和的消息压缩成一定固定长度消息摘要的函数
@@ -21,8 +16,5 @@ public class testMain {
         System.out.println(63%4);
         System.out.println(63&3);
         System.out.println(Integer.toBinaryString(4));
-        ThreadLocalMap localMap = new ThreadLocalMap();
-        ThreadLocal<Object> threadLocal = new ThreadLocal<>();
-        AtomicInteger atomicInteger = new AtomicInteger(0);
     }
 }

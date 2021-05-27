@@ -1,4 +1,4 @@
-package cn.com.cgh.attach.attach;
+package cn.com.cgh.agent.attach;
 
 
 import com.sun.tools.attach.AttachNotSupportedException;

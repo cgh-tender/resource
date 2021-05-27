@@ -12,7 +12,7 @@ public class Student implements Serializable {
     private String name = "cgh";
     private int age = 25;
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
