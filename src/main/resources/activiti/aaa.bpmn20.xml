@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="aaa" name="aaa" isExecutable="true">
+    <startEvent id="sid-49f4b33c-cc08-42a9-bd83-aa773796abfc"/>
+    <sequenceFlow id="sid-32da3736-4a6f-4ac7-963a-8fc6a01f5cf7" sourceRef="sid-49f4b33c-cc08-42a9-bd83-aa773796abfc" targetRef="sid-4acc0222-9bc5-485d-904e-b151855e0ebd"/>
+    <userTask id="sid-4acc0222-9bc5-485d-904e-b151855e0ebd" name="请假人"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_aaa">
+    <bpmndi:BPMNPlane bpmnElement="aaa" id="BPMNPlane_aaa">
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-d1251a09-0341-455a-967a-69eb9a70c504" bpmnElement="sid-49f4b33c-cc08-42a9-bd83-aa773796abfc">
+        <omgdc:Bounds x="-1436.9634" y="-564.0401" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-057741d2-2951-49b9-88d2-58d879141f59" bpmnElement="sid-32da3736-4a6f-4ac7-963a-8fc6a01f5cf7">
+        <omgdi:waypoint x="-1406.9634" y="-549.0401"/>
+        <omgdi:waypoint x="-1327.4952" y="-549.04004"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-0b37ba02-ef4d-4a6e-b4ef-7592b5978d23" bpmnElement="sid-4acc0222-9bc5-485d-904e-b151855e0ebd">
+        <omgdc:Bounds x="-1327.4954" y="-589.04004" width="100.0" height="80.0"/>
+      </bpmdi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
