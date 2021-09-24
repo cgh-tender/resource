@@ -8,19 +8,19 @@ import java.util.concurrent.CountDownLatch;
  * @date 2020/8/10 18:12
  **/
 public class UseCountDown {
-    private static CountDownLatch downLatch = new CountDownLatch(5);
+    private static CountDownLatch downLatch = new CountDownLatch(4);
 
     public static void main(String[] args) {
         new Thread(new DownOneThread()).start();
         new Thread(new DownOneThread()).start();
         new Thread(new DownOneThread()).start();
         new Thread(new DownTwoThread()).start();
-        try {
-            System.out.println("等待");
-            downLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            System.out.println("等待");
+//            downLatch.await();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         System.out.println("结束");
     }
 
@@ -30,7 +30,7 @@ public class UseCountDown {
             downLatch.countDown();
             System.out.println("1111-" + Thread.currentThread().getId());
             try {
-                Thread.sleep(1000);
+                Thread.sleep(4000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -43,7 +43,7 @@ public class UseCountDown {
             downLatch.countDown();
             System.out.println("2222-" + Thread.currentThread().getId());
             try {
-                Thread.sleep(2000);
+                Thread.sleep(4000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

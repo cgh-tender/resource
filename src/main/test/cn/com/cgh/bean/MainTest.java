@@ -1,27 +1,26 @@
 package cn.com.cgh.bean;
 
 
-import cn.com.cgh.invock.C;
-import cn.com.cgh.invock.Peple;
-import cn.com.cgh.invock.prov;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.lang.reflect.Proxy;
+import java.util.List;
+import java.util.Map;
 
 public class MainTest {
     private ApplicationContext context;
     @Before
     public void before(){
         context = new AnnotationConfigApplicationContext("cn.com.cgh");
+//        context = new AnnotationConfigApplicationContext(CghApplication.class);
     }
     @Test
     public void invoke(){
-        Peple bean = context.getBean(Peple.class);
-        bean.eat("不是好吃的");
-        Peple o = (Peple) Proxy.newProxyInstance(MainTest.class.getClassLoader(), new Class<?>[]{Peple.class}, new prov(new C()));
-        o.eat("好吃的");
+        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT * FROM aaa");
+        System.out.println(result);
     }
 }

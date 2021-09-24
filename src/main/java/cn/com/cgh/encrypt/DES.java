@@ -1,7 +1,7 @@
 package cn.com.cgh.encrypt;
 
 import com.sun.crypto.provider.DESedeCipher;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;

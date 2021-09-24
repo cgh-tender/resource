@@ -28,32 +28,4 @@ public class DemoController {
         return "hello " + name;
     }
 }
-@Data
-class Names{
-    /**
-     * name
-     */
-    @NotNull
-    private String name;
-    /**
-     * age
-     */
-    private int age;
-    /**
-     * Save
-     */
-    @Valid
-    private List<D> names;
-}
-@Data
-class D{
-    /**
-     * name
-     */
-    @NotNull
-    private String nameD;
-    /**
-     * age
-     */
-    private int ageD;
-}
+

@@ -1,10 +1,19 @@
 <center>JVM</center>
 
-[toc]
-
 ---- 
-# JVM 对象引用
-## java
+
+- 
+- [JVM 对象引用](#JVM对象引用)
+  - [类加载过程](##类加载过程) 
+  - [java](#java)
+
+
+#JVM对象引用
+加载-->验证-->准备-->解析-->初始化
+
+##类加载过程
+
+##java
 > javac 对 .java 编译为 .class  
 > javap -c/-p 对 .class 反汇编  
 >> 命令: java -cp ./sa-jdi.jar sun.jvm.hotspot.HSDB 

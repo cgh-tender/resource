@@ -1,7 +1,5 @@
 package cn.com.cgh.util.thread.threadLock.aqs;
 
-import org.apache.tools.ant.taskdefs.Sleep;
-
 import java.util.concurrent.locks.Lock;
 
 public class TestMyUseAqs {
