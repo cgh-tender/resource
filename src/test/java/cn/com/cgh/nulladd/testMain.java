@@ -3,12 +3,6 @@ package cn.com.cgh.nulladd;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class testMain {
     private static Logger log = LoggerFactory.getLogger(testMain.class);
     public static void main(String[] args) {

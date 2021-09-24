@@ -3,6 +3,8 @@ package cn.com.cgh.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import javax.activation.DataSource;
+
 /**
  * @author haider
  * @date 2021年09月24日 11:51

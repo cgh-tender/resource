@@ -1,10 +1,12 @@
 package cn.com.cgh.config;
 
-import org.springframework.context.annotation.Bean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
+import javax.annotation.PostConstruct;
 
 /**
  * @author haider
@@ -12,18 +14,11 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class DBConfig {
-//    @Bean
-//    public DataSource dataSource(DBProperties dbProperties){
-//        ComboPooledDataSource dataSource = new C omboPooledDataSource();
-//
-//        try{
-//            dataSource.setJdbcUrl(dbProperties.getUrl());
-//            dataSource.setDriverClass(dbProperties.getDriverClassName());
-//            dataSource.setUser(dbProperties.getUsername());
-//            dataSource.setPassword(dbProperties.getPassword());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return dataSource;
-//    }
+    private static Logger logger = LoggerFactory.getLogger(DBConfig.class);
+    @Autowired
+    private DataSourceProperties basicProperties;
+    @PostConstruct
+    public void p(){
+        logger.info(basicProperties.getUrl());
+    }
 }

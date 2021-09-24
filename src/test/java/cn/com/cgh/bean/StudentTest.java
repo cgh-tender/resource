@@ -1,5 +1,6 @@
 package cn.com.cgh.bean;
 
+import cn.com.cgh.bean.Student;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
