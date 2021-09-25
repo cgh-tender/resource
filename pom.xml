@@ -39,7 +39,7 @@
         <spring.mvc.solr.version>4.3.12</spring.mvc.solr.version>
         <solrj.version>8.5.2</solrj.version>
         <japidocs.version>1.4.2</japidocs.version>
-        <guava.version>25.1-android</guava.version>
+        <guava.version>29.0-android</guava.version>
         <tika.version>2.1.0</tika.version>
         <lombok.version>1.18.12</lombok.version>
         <shiro.version>1.8.0</shiro.version>
