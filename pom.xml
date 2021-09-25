@@ -50,7 +50,7 @@
         <easyexcel.version>2.2.6</easyexcel.version>
         <activiti.version>7.1.0.M6</activiti.version>
         <jsch.version>0.1.54</jsch.version>
-        <nimbus.version>4.41.1</nimbus.version>
+        <nimbus.version>7.9</nimbus.version>
         <mybatis.version>2.2.0</mybatis.version>
         <druid.version>1.2.6</druid.version>
         <servletapi.version>2.3</servletapi.version>
