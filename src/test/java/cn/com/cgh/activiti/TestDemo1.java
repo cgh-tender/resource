@@ -1,11 +1,8 @@
 package cn.com.cgh.activiti;
 
 import org.activiti.engine.*;
-import org.activiti.engine.history.HistoricDetail;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.Deployment;
-import org.activiti.engine.runtime.Execution;
-import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.junit.Test;
 
