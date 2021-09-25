@@ -9,8 +9,8 @@ import javax.activation.DataSource;
  * @author haider
  * @date 2021年09月24日 11:51
  */
-//@Configuration
-//@ConfigurationProperties(prefix = "spring.datasource")
+@Configuration
+@ConfigurationProperties(prefix = "spring.datasource")
 public class DBProperties {
     private String driverClassName;
     private String url;

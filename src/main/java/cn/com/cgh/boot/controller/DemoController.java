@@ -26,8 +26,6 @@ import java.util.Map;
 @Validated
 public class DemoController {
     private static Logger logger = LoggerFactory.getLogger(DemoController.class);
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
     /**
      *
      * @param name 传入名称
@@ -37,17 +35,6 @@ public class DemoController {
     @ResponseBody
     public String test1(@Valid Names name) {
         return "hello " + name;
-    }
-
-    public void createActivitiTable(){
-        ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml");
-        ProcessEngine processEngine = processEngineConfiguration.buildProcessEngine();
-        logger.info(processEngine.toString());
-    }
-    @PostConstruct
-    public void p(){
-        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT * FROM aaa");
-        System.out.println(result);
     }
 }
 

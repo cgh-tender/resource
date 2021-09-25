@@ -1,6 +1,9 @@
 package cn.com.cgh.bean;
 
 
+import cn.com.cgh.config.DBProperties;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngineConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -15,12 +18,16 @@ public class MainTest {
     @Before
     public void before(){
         context = new AnnotationConfigApplicationContext("cn.com.cgh");
-//        context = new AnnotationConfigApplicationContext(CghApplication.class);
     }
     @Test
-    public void invoke(){
+    public void dbClient(){
         JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
-        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT * FROM aaa");
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT * FROM aa");
         System.out.println(result);
+    }
+
+    @Test
+    public void createActivitiTables(){
+
     }
 }
