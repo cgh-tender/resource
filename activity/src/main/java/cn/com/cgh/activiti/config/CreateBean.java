@@ -1,26 +1,17 @@
 package cn.com.cgh.activiti.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 @Configuration
-public class CreateBean {
-//    @Autowired
-//    private DataSource dataSource;
-//
-//    @Autowired
-//    private ProcessEngineConfiguration processEngineConfiguration;
-//
-//    @Autowired
-//    private RuntimeService runtimeService;
-//
-//    @PostConstruct
-//    public void p(){
-//        System.out.println("=============");
-//        System.out.println(runtimeService);
-//        System.out.println(processEngineConfiguration);
-//    }
+public class CreateBean implements ApplicationContextAware {
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        DataSource dataSource = applicationContext.getBean(DataSource.class);
+        System.out.println(dataSource);
+    }
 }

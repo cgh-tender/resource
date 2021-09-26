@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.3.11.RELEASE</version>
     </parent>
 
     <properties>
@@ -34,8 +34,7 @@
         <jackson.data.version>1.9.13</jackson.data.version>
         <fastjson.version>1.2.70</fastjson.version>
         <hive.version>3.1.2</hive.version>
-        <spring.boot.version>2.5.4</spring.boot.version>
-        <spring.boot.test.version>2.5.4</spring.boot.test.version>
+        <spring.boot.version>2.3.11.RELEASE</spring.boot.version>
         <spring.mvc.solr.version>4.3.12</spring.mvc.solr.version>
         <solrj.version>8.5.2</solrj.version>
         <japidocs.version>1.4.2</japidocs.version>
@@ -105,7 +104,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.boot.test.version}</version>
+                <version>${spring.boot.version}</version>
             </dependency>
 
             <dependency>

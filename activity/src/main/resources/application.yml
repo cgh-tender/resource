@@ -1,8 +1,4 @@
 spring:
-  data:
-    solr:
-      host: http://solr.com:8983/solr
-      collection: mycor
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # nullCatalogMeansCurrent=true ，表示mysql默认当前数据库操作，在mysql-connector-java 5.xxx该参数默认为true，在6.xxx以上默认为false
@@ -16,8 +12,9 @@ spring:
     history-level: full
     check-process-definitions: true
 
-logging:
-  config: classpath:lockback.xml
+#logging:
+#  level: info
+#  config: classpath:lockback.xml
 
 server:
   port: 8881
