@@ -69,12 +69,18 @@ public class TestTrunkActiviti {
                 .processInstanceBusinessKey("1111")
                 .singleResult();
         Map<String, Object> variables = new HashMap<>();
-        variables.put("a", 4);
-//        taskService.setAssignee(task.getId(),"test01");
-//        System.out.println("task = " + task.toString());
-//        taskService.complete(task.getId(),variables);
+        variables.put("a", 3);
         ActivitiUtil activitiUtil = new ActivitiUtil();
         String rollBaseTaskAss = activitiUtil.getRollBaseTaskAss(task, variables);
+//        taskService.setAssignee(task.getId(),rollBaseTaskAss);
+//        taskService.setAssignee(task.getId(),"test01");
+        taskService.complete(task.getId(),variables);
+        List<Task> list = taskService.createTaskQuery()
+                .processInstanceBusinessKey("1111").list();
+        for (Task task1 : list) {
+//            taskService.setAssignee(task1.getId(),"test04");
+            taskService.setAssignee(task1.getId(),rollBaseTaskAss);
+        }
         System.out.println("rollBaseTaskAss = " + rollBaseTaskAss);
     }
 

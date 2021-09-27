@@ -25,7 +25,7 @@ public class ActivitiUtil {
         List<HistoricTaskInstance> hisTaskList = historyService.createHistoricTaskInstanceQuery()
                 .processInstanceId(task.getProcessInstanceId())
                 .orderByTaskCreateTime()
-                .asc()
+                .desc()
                 .list();
         UserTask element = (UserTask) getNextUserFlowElement(task);
         List<SequenceFlow> flows = element.getOutgoingFlows();
