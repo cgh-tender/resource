@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 public class CreateBean implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        DataSource dataSource = applicationContext.getBean(DataSource.class);
-        System.out.println(dataSource);
+//        DataSource dataSource = applicationContext.getBean(DataSource.class);
+//        System.out.println(dataSource);
     }
 }

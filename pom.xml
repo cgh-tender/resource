@@ -72,6 +72,12 @@
                 <artifactId>activiti-spring-boot-starter</artifactId>
                 <version>${activiti.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.activiti.dependencies</groupId>
+                <artifactId>activiti-dependencies</artifactId>
+                <version>${activiti.version}</version>
+                <type>pom</type>
+            </dependency>
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
