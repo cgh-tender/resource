@@ -1,52 +1,170 @@
 package cn.com.cgh.bean;
 
-import org.datanucleus.util.Base64;
-
-import java.io.IOException;
-import java.util.regex.Pattern;
+import java.util.*;
 
 public class Tests {
-    //从html中提取纯文本
-    public static String Html2Text(String inputString) {
-        String htmlStr = inputString; // 含html标签的字符串
-        String textStr = "";
-        Pattern p_script;
-        java.util.regex.Matcher m_script;
-        Pattern p_style;
-        java.util.regex.Matcher m_style;
-        Pattern p_html;
-        java.util.regex.Matcher m_html;
-        try {
-            String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; // 定义script的正则表达式{或<script[^>]*?>[\\s\\S]*?<\\/script>
-            String regEx_style = "<[\\s]*?style[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?style[\\s]*?>"; // 定义style的正则表达式{或<style[^>]*?>[\\s\\S]*?<\\/style>
-            String regEx_html = "<[^>]+>"; // 定义HTML标签的正则表达式
-            p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);
-            m_script = p_script.matcher(htmlStr);
-            htmlStr = m_script.replaceAll(""); // 过滤script标签
-            p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);
-            m_style = p_style.matcher(htmlStr);
-            htmlStr = m_style.replaceAll(""); // 过滤style标签
-            p_html = Pattern.compile(regEx_html, Pattern.CASE_INSENSITIVE);
-            m_html = p_html.matcher(htmlStr);
-            htmlStr = m_html.replaceAll(""); // 过滤html标签
-            textStr = htmlStr;
-        } catch (Exception e) {
-            System.err.println("Html2Text: " + e.getMessage());
+    public int Year; // 年份
+    public int Month; // 月份
+    public int Day; // 日期
+    public int Days; // 当月有几天
+    public int Week; // 当月第一天为周几
+
+    private int START_YEAR = 1900;
+
+    public void getCurDate() {
+        Date date = new Date();
+
+        this.Year = date.getYear() + START_YEAR;
+        this.Month = date.getMonth() + 1;
+        this.Day = date.getDate();
+    }
+
+    /**
+     * 判断是否为闰年
+     *
+     * @param year
+     * @return 如果为真则为闰年，反之为平年
+     */
+    public boolean isRun(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 )
+            return true;
+        return false;
+    }
+
+    /**
+     * 计算当月天数
+     *
+     * @param month
+     *            月份
+     * @param year
+     *            年份
+     */
+    public void getDays(int month, int year) {
+        switch (month) {
+            case 2:
+                if (isRun(year))
+                    this.Days = 29;
+                else
+                    this.Days = 28;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                this.Days = 30;
+                break;
+            default:
+                this.Days = 31;
+                break;
         }
-        //剔除空格行
-        textStr = textStr.replaceAll("[ ]+", " ");
-        textStr = textStr.replaceAll("(?m)^\\s*$(\\n|\\r\\n)", "");
-        return textStr;// 返回文本字符串
+    }
+
+    /**
+     * 计算当月第第一天是一年中的第几天
+     *
+     * @param month
+     * @param year
+     * @return
+     */
+    public int getYearDays(int month, int year) {
+        int days = 1;
+        for (int i = 1; i < month; i++) {
+            switch (i) {
+                case 2:
+                    if (isRun(year))
+                        days += 29;
+                    else
+                        days += 28;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    days += 30;
+                    break;
+                default:
+                    days += 31;
+                    break;
+            }
+        }
+        return days;
+    }
+
+    /**
+     * 计算1900年到当年1月1日经过了多少天
+     *
+     * @param year
+     *            当前年份
+     * @return
+     */
+    public int getYearsDay(int year) {
+        int days = 0;
+        for (int i = 1900; i < year; i++) {
+            if (isRun(i))
+                days += 366;
+            else
+                days += 365;
+        }
+        return days;
+    }
+
+    /**
+     * 计算当月第一天为周几
+     *
+     * @param year
+     *            年份
+     * @param month
+     *            月份
+     */
+    public void getWeek(int year, int month) {
+        int days = getYearsDay(year) + getYearDays(month, year);
+        this.Week = days % 7 == 0 ? 7 : days % 7;
+        System.out.println(date.Year+"-"+date.Month+"-01 "+this.WEEKS.get(this.Week-1));
+        System.out.println(START_YEAR+"-01-01 至 "+date.Year+"-"+date.Month+"-01 共 "+ (days -1) + " 天") ;
+    }
+
+    protected static Scanner scanner = new Scanner(System.in);
+
+    protected static Tests date = null;
+    protected static List<String> WEEKS = Arrays.asList("周日","周一","周二","周三","周四","周五","周六");
+
+
+    public static void main(String[] args) {
+        date = new Tests();
+        date.getCurDate();
+        date.show();
+    }
+    public void show() {
+        System.out.println("************ welcome 万年历 ************");
+        System.out.println("北京时间：" + date.Year + "年" + date.Month + "月"
+                + date.Day + "日\n");
+        date.getWeek(date.Year, date.Month);
+        date.getDays(date.Month, date.Year);
+        getShow(date.Week, date.Days);
+        while (true) {
+            System.out.println("\n请输入年份：");
+            date.Year = scanner.nextInt();
+            System.out.println("请输入月份：");
+            date.Month = scanner.nextInt();
+            date.getWeek(date.Year, date.Month);
+            date.getDays(date.Month, date.Year);
+            getShow(date.Week, date.Days);
+        }
+    }
+    public void getShow(int week, int days) {
+        System.out.println("周日\t周一\t周二\t周三\t周四\t周五\t周六\t");
+        if (week != 7) {
+            for (int i = 0; i < week; i++) {
+                System.out.print("\t");
+            }
+        }
+        for (int i = 1; i <= days; i++) {
+            System.out.print(i + "\t");
+            if (i % 7 == 7 - week) {
+                System.out.println();
+            }
+        }
     }
 
 
-    public static void main(String[] args) throws IOException {
-//        String text="<p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\"><span class=\"bjh-strong\" style=\"font-size: 18px; font-weight: 700;\">海外网9月8日电</span>当地时间7日，印度外交部长苏杰生谈及中印关系时表示，中印的边界情况和两国的关系“无法脱钩”，认为当前双方边境间的紧张局势可能会影响中印关系。他也表示，中印双方需要就当前的边境局势在政治层面进行“非常、非常深入的对话”。</span></p><p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\">综合印度报业托拉斯、《经济时报》7日报道，苏杰生当天对印媒表示，中印边境的状态与中印关系“无法脱钩”，过去30年得益于中印边境地区的和平安宁，两国关系在其他方面也取得了进展。“如果边境没有和平与安宁，那么（中印）两国关系的其余部分就不可能在同一基础上继续下去。显然，和平与安宁是两国关系的基础。”</span></p><p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\">《经济时报》指出，这一观点在苏杰生的新书《印度之路：在不确定世界中的策略》里也有所体现，反映出印方意识到当前中印边境的紧张局势可能会影响两国关系。此外，苏杰生也谈到，当前中印边境局势“非常严峻”，并称这要求中印双方在政治层面进行“非常、非常深入的对话”。</span></p><p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\">苏杰生近一段时间曾多次就中印关系作出表态。9月3日，他在印度智库观察家研究基金会(ORF)的一场线上活动中表示，现在不是中印双边关系中“最容易的时候”，两国达成和解是当务之急且至关重要，这不仅仅是对两国自身而言。8月31日，他在参加论坛时称，中印都是拥有超过10亿人口的国家，各自拥有自己的历史和文化，两国之间达成一定的理解或平衡是非常重要的。</span></p><p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\">9月4日，外交部发言人华春莹主持例行记者会时曾表示，对于中印边界历史遗留的问题和现实存在的问题，我们历来主张通过和平友好协商，找到公平合理和双方都能接受的解决方案。对于边境地区最近出现的事态，中印双方正通过外交和军事渠道保持着密切沟通。我们希望同印方通过磋商妥善解决有关问题，共同维护边境地区的和平与安宁。这是符合中印两国人民利益。（海外网 张霓）</span></p><p style=\"margin-top: 22px; margin-bottom: 0px; padding: 0px; line-height: 24px; color: rgb(51, 51, 51); text-align: justify; font-family: arial; white-space: normal; background-color: rgb(255, 255, 255);\"><span class=\"bjh-p\">本文系版权作品，未经授权严禁转载。海外视野，中国立场，浏览人民日报海外版官网——海外网www.haiwainet.cn或“海客”客户端，领先一步获取权威资讯。</span></p><p><br/></p>";
-//        System.out.println(Html2Text(text));
-
-//        System.out.println((int)Math.ceil((double) 101/100));
-//        System.out.println((int)Math.floor((double) 101/100));
-//        System.out.println((int)Math.round((double) 101/100));
-        System.out.println(Base64.encode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9".getBytes()));
-    }
 }
