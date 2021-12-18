@@ -1,22 +1,16 @@
 package cn.com.cgh.encrypt;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.crypto.provider.DESedeCipher;
 import lombok.extern.slf4j.Slf4j;
-import net.minidev.json.JSONNavi;
-import netscape.javascript.JSObject;
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -77,11 +71,5 @@ public class TestMain {
                 System.out.println(k + " : " + v);
             }
         }));
-        System.out.println(a);
-        org.json.JSONArray jsonArray1 = new org.json.JSONArray(a);
-        int length = jsonArray1.length();
-        for (int i = 0; i < length; i++) {
-
-        }
     }
 }
