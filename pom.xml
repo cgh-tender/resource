@@ -12,6 +12,7 @@
         <module>mode</module>
         <module>activity</module>
         <module>solr</module>
+        <module>openfeign</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -76,7 +77,7 @@
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
-                <scope>runtime</scope>
+                <scope>import</scope>
             </dependency>
 
             <dependency>

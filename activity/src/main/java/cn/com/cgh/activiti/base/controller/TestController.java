@@ -1,22 +1,22 @@
 package cn.com.cgh.activiti.base.controller;
 
+import cn.com.cgh.openfeign.solr.SolrService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestController {
 
-    private final RestTemplate restTemplate;
+//    private final RestTemplate restTemplate;
+
+//    @Autowired
+//    public TestController(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
 
     @Autowired
-    public TestController(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
+    private SolrService solrService;
 
-    @RequestMapping(value = "/echo/{str}", method = RequestMethod.GET)
+    @GetMapping(value = "/echo/{str}")
     public String echo(@PathVariable String str) {
-        return restTemplate.getForObject("http://solr/echo/" + str, String.class);
+        return solrService.echo(str);
     }
 }

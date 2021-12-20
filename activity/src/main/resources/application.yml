@@ -22,6 +22,14 @@ spring:
         namespace: public
         # 权重
         weight:
+#          spring cloud 禁用 ribbon
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+#         负载均衡器： 不使用ribbon enabled:false 默认为 true or
+#    loadbalancer:
+#      retry:
+#        enabled: true
 
 #logging:
 #  level: info
