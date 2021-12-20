@@ -1,6 +1,6 @@
 package cn.com.cgh.activiti.base.controller;
 
-import cn.com.cgh.openfeign.solr.SolrService;
+import cn.com.cgh.solr.SolrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

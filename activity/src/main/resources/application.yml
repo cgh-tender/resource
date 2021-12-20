@@ -21,7 +21,7 @@ spring:
         password: nacos
         namespace: public
         # 权重
-        weight:
+#        weight:
 #          spring cloud 禁用 ribbon
 #    loadbalancer:
 #      ribbon:
@@ -31,8 +31,9 @@ spring:
 #      retry:
 #        enabled: true
 
-#logging:
-#  level: info
+logging:
+  level:
+    cn.com.cgh: debug
 #  config: classpath:lockback.xml
 
 server:
@@ -43,6 +44,15 @@ solr:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
 
-
 mybatis:
   mapper-locations: cn.com.cgh.activity.**.mapper
+
+
+feign:
+  client:
+    config:
+      solr:
+        loggerLevel: BASIC # NONE, BASIC, HEADERS, FULL;
+        requestInterceptors[0]:
+          cn.com.cgh.openfeign.Interceptor.CustomFeignInterceptor
+#        contract: feign.Contract.Default # 设置为默认的契约（还原成原生注解）

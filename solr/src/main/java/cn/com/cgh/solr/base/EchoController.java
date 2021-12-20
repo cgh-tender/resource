@@ -1,6 +1,5 @@
 package cn.com.cgh.solr.base;
 
-import cn.com.cgh.openfeign.solr.SolrService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-public class EchoController implements SolrService {
+public class EchoController {
     @Autowired
     private RedisTemplate redisTemplate;
     @Value("${server.port}")
     private String port;
 
-    @Override
     @GetMapping(value = "/echo/{string}")
     public String echo(@PathVariable String string) {
         log.info("info {}",string);

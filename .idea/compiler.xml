@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mode" />
+        <module name="openfeign" />
         <module name="security" />
         <module name="activity" />
         <module name="solr" />
