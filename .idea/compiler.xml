@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mode" />
         <module name="openfeign" />
+        <module name="sentinel" />
         <module name="security" />
         <module name="activity" />
         <module name="solr" />

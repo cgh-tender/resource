@@ -11,25 +11,16 @@ spring:
     db-history-used: true
     history-level: full
     check-process-definitions: true
-  application:
-    name: activiti
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 192.168.111.90:8846
-        username: nacos
-        password: nacos
-        namespace: public
-        # 权重
-#        weight:
-#          spring cloud 禁用 ribbon
-#    loadbalancer:
-#      ribbon:
-#        enabled: false
-#         负载均衡器： 不使用ribbon enabled:false 默认为 true or
-#    loadbalancer:
-#      retry:
-#        enabled: true
+#  application:
+#    name: activiti
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.111.90:8846
+#        username: nacos
+#        password: nacos
+#        namespace: public
+
 
 logging:
   level:
@@ -38,6 +29,7 @@ logging:
 
 server:
   port: 8081
+
 
 # 权重模式 or RibbonClients(RibbonRandomRuleConfig、RibbonNacosRuleConfig)
 solr:

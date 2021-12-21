@@ -1,9 +1,9 @@
 package cn.com.cgh.activiti;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
@@ -12,8 +12,9 @@ import org.springframework.context.annotation.ComponentScans;
 //                @RibbonClient(name = "solr",configuration = RibbonRandomRuleConfig.class)
 //        }
 //)
+@Slf4j
 public class ActivitiApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(ActivitiApplication.class,args);
+    public static void main(String[] args) throws InterruptedException {
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(ActivitiApplication.class, args);
     }
 }

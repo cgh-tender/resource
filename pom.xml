@@ -13,6 +13,7 @@
         <module>activity</module>
         <module>solr</module>
         <module>openfeign</module>
+        <module>sentinel</module>
     </modules>
 
     <packaging>pom</packaging>

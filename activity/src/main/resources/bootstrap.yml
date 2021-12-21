@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: activiti
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: 192.168.111.90:8846
+        namespace: dev
+# 权重
+#        weight:
+#          spring cloud 禁用 ribbon
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+#         负载均衡器： 不使用ribbon enabled:false 默认为 true or
+#    loadbalancer:
+#      retry:
+#        enabled: true
+      config:
+        server-addr: 192.168.111.90:8846
+        group: DEFAULT_GROUP
+        namespace: a0b17270-c160-4d69-bc98-d6530ae3c719
+#        file-extension: yaml
+        shared-configs: # 优先级小
+          - dataId: cn.com.cgh.common.properties
+            group: DEFAULT_GROUP
+            refresh: true
+          - dataId: cn.com.cgh.public.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+        # extension-configs 的优先级大于 shared-configs 的配置 可以更改默认配置内容
+#        extension-configs[0]:
+#          dataId: cn.com.cgh.common.properties
+#          group: DEFAULT_GROUP
+#          refresh: true
+#        extension-configs[1]:
+#          dataId: cn.com.cgh.public.yaml
+#          group: DEFAULT_GROUP
+#          refresh: true
