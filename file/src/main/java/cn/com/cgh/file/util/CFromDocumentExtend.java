@@ -1,4 +1,4 @@
-package cn.com.cgh.sentinel.ftp;
+package cn.com.cgh.file.util;
 
 import lombok.Data;
 
@@ -23,7 +23,7 @@ public class CFromDocumentExtend implements Serializable {
      * 表单 id
      * 在多条为统一时 fromId == commentId
      */
-    
+
 
     private String fromId;
 
@@ -33,19 +33,6 @@ public class CFromDocumentExtend implements Serializable {
     
 
     private String documentPath;
-
-    /**
-     * 任务id 步骤ID [is null:表单提交时附件;is not null:处理内容时附件]
-     */
-    
-
-    private String taskId;
-
-    /**
-     * 评论id
-     */
-
-    private String commonId;
 
     /**
      * 文件类型 :[from,field]

@@ -1,6 +1,6 @@
-package cn.com.cgh.sentinel.ftp;
+package cn.com.cgh.file.util;
 
-import com.google.protobuf.ServiceException;
+import cn.com.cgh.common.exception.ServiceException;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
@@ -55,8 +55,8 @@ public class FtpUtil {
 
 		password = ftpConfig.getPassword();
 
-//		ftp_home_path = this.dropPathSuffix(this.addPathPrefix(ftpConfig.getFtp_home_path()));
-		ftp_home_path = ftpConfig.getFtp_home_path();
+		ftp_home_path = this.dropPathSuffix(this.addPathPrefix(ftpConfig.getFtp_home_path()));
+//		ftp_home_path = ftpConfig.getFtp_home_path();
 
 		data_encoder = ftpConfig.getData_encoder();
 		bufferSize  = ftpConfig.getBufferSize();
@@ -525,7 +525,7 @@ public class FtpUtil {
         }
     }
 
-    public String upload(String remoteFileName,InputStream fis) throws IOException, Exception {
+    public String upload(String remoteFileName,InputStream fis) throws IOException {
         logger.info("准备上传文件[remote file path]:"+remoteFileName);
         // 从文件名获取上传目录
         String remotePath = getPath(remoteFileName);
@@ -657,7 +657,7 @@ public class FtpUtil {
     public String dropPathSuffix(String path){
         if(StringUtils.isBlank(path))
             return "";
-        path = path.replace("\\","/");
+        path = path.replaceAll("\\\\","/").replaceAll("//","/");
         if(path.endsWith("/")){
             return StringUtils.substring(path, 0,path.length()-1);
         }else
@@ -714,7 +714,7 @@ public class FtpUtil {
         return ;
     }
 
-    public InputStream getFileInPutStream(String remoteFileName) throws IOException, ServiceException {
+    public InputStream getFileInPutStream(String remoteFileName) throws IOException {
         logger.info("准备下载文件[remote file path]:"+remoteFileName);
         // 从文件名获取下载目录
         String remotePath = getPath(remoteFileName);

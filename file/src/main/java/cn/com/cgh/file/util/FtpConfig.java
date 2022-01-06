@@ -1,4 +1,4 @@
-package cn.com.cgh.sentinel.ftp;
+package cn.com.cgh.file.util;
 
 /**
  * 对接 FTP 配置类

@@ -14,6 +14,8 @@
         <module>solr</module>
         <module>openfeign</module>
         <module>sentinel</module>
+        <module>common</module>
+        <module>file</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -52,11 +54,22 @@
         <javax.version>4.0.1</javax.version>
         <jsp.version>2.2</jsp.version>
         <mysql.version>8.0.21</mysql.version>
+        <commons.net.version>3.8.0</commons.net.version>
+        <poi.version>5.0.0</poi.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons.net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>

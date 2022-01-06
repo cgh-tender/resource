@@ -1,7 +1,6 @@
-package cn.com.cgh.sentinel.ftp;
+package cn.com.cgh.file.util;
 
-import cn.com.dwsoft.authority.util.SnowflakeIdUtil;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -671,7 +670,7 @@ public class FileUtil {
             /*路径处理*/
             if(!toPath.contains(NO_FILE_NAME_SEPARATOR)){
                 if (StringUtils.isBlank(toName)){
-                    toName = SnowflakeIdUtil.generateId() + "";
+                    toName = SnowFlake.nextId("");
                 }else {
                     toName = toName.replaceAll(REG_END_ZIP,"");
                 }

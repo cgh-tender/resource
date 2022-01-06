@@ -11,7 +11,9 @@
         <module name="openfeign" />
         <module name="sentinel" />
         <module name="security" />
+        <module name="file" />
         <module name="activity" />
+        <module name="common" />
         <module name="solr" />
       </profile>
     </annotationProcessing>
