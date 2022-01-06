@@ -32,11 +32,11 @@ public class EchoController {
         log.info("info {}",string);
         Long a = redisTemplate.opsForValue().increment("a", 1);
         redisTemplate.delete("a");
-        File file = new File("F:\\My_Work_Base\\spring_base\\resource\\solr\\src\\main\\java\\cn\\com\\cgh\\solr\\SolrApplication.java");
-        FileInputStream inputStream = new FileInputStream(file);
-        MockMultipartFile multipartFile = new MockMultipartFile(file.getName(), inputStream);
-        CFromDocumentExtend save = saveFileUtil.save(multipartFile, true);
-        log.info(save.toString());
+//        File file = new File("F:\\My_Work_Base\\spring_base\\resource\\solr\\src\\main\\java\\cn\\com\\cgh\\solr\\SolrApplication.java");
+//        FileInputStream inputStream = new FileInputStream(file);
+//        MockMultipartFile multipartFile = new MockMultipartFile(file.getName(), inputStream);
+//        CFromDocumentExtend save = saveFileUtil.save(multipartFile, true);
+//        log.info(save.toString());
         return "Hello Nacos Discovery " + port + " " + string + " " + a;
     }
     @Autowired
