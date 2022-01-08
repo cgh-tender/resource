@@ -1,8 +1,8 @@
 package cn.com.cgh.common.util;
 
 public enum ErrorCode {
-    FAILED(0, "失败"),
-    SUCCESS(1, "成功");
+    FAILED(-1, "失败"),
+    SUCCESS(0, "成功");
     private long code;
     private String msg;
     ErrorCode(final long code, final String msg) {

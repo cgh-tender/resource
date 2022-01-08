@@ -1,6 +1,7 @@
 package cn.com.cgh.common.exception;
 
 import cn.com.cgh.common.util.HttpServlet;
+import cn.com.cgh.common.util.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.BindException;
@@ -22,6 +23,6 @@ public class AuthGlobalBandingExceptionHandler {
     public void exceptionHandler(BindException e)
     {
         log.info("@"+e.getBindingResult().getFieldError().getCode() + " ===> " + e.getBindingResult().getFieldError().getDefaultMessage());
-        HttpServlet.print(e.getBindingResult().getFieldError().getDefaultMessage());
+        HttpServlet.print(R.failed(e.getBindingResult().getFieldError().getDefaultMessage()),200);
     }
 }

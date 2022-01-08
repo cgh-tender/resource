@@ -12,6 +12,8 @@ import java.io.Serializable;
 @Data
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 1000L;
+    private static long sCode;
+    private static String sMsg;
     /**
      * 返回编码
      */
@@ -31,13 +33,21 @@ public class R<T> implements Serializable {
 
     public R(){}
 
-    public R(T data){
-        this.data = data;
+    public R(long code){
+        this.sCode = code;
+        this.code = code;
     }
 
-    public R(long code,T data){
+    public R(String msg){
+        this.sMsg = msg;
+        this.msg = msg;
+    }
+
+    public R(long code,String msg){
+        this.sCode = code;
         this.code = code;
-        this.data = data;
+        this.sMsg = msg;
+        this.msg = msg;
     }
 
     public static <T> R<T> failed(T data){
@@ -65,7 +75,7 @@ public class R<T> implements Serializable {
     }
 
     public static <T> R<T> restResult(T data, ErrorCode errorCode) {
-        return restResult(data, errorCode.getCode(),errorCode.getMsg());
+        return restResult(data, !"".equalsIgnoreCase(sCode+"") ? sCode : errorCode.getCode() , !"".equalsIgnoreCase(sMsg) ? sMsg : errorCode.getMsg());
     }
 
     private static <T> R<T> restResult(T data, long code, String msg) {

@@ -1,21 +1,29 @@
 package cn.com.cgh.sentinel.base;
 
 
+import cn.com.cgh.common.exception.ServiceException;
 import cn.com.cgh.sentinel.entity.User;
 import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.misc.BASE64Encoder;
 
 import javax.annotation.PostConstruct;
+import java.io.FileInputStream;
+import java.security.KeyStore;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +34,7 @@ public class TestController {
 
     private static final String RESOURCE_NAME = "hello";
     private static final String USER_RESOURCE_NAME = "user";
+    private static final String DEGRADE_RESOURCE_NAME = "degrade";
 
     /**
      * 资源 接口
@@ -55,6 +64,9 @@ public class TestController {
 
     @PostConstruct
     public void p(){
+        /**
+         * 流控
+         */
         List<FlowRule> rules = new ArrayList<>();
         FlowRule rule = new FlowRule();
         rule.setResource(RESOURCE_NAME);
@@ -70,6 +82,25 @@ public class TestController {
 
         rules.add(rule1);
         FlowRuleManager.loadRules(rules);
+
+        /**
+         * 熔断降级
+         */
+        List<DegradeRule> degradeRules = new ArrayList<>();
+        DegradeRule degradeRule = new DegradeRule();
+        degradeRule.setResource(DEGRADE_RESOURCE_NAME);
+        //RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT 异常数
+        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT);
+        // 触发熔断异常数
+        degradeRule.setCount(2);
+        // 触发熔断最小请求数
+        degradeRule.setMinRequestAmount(2);
+        // 统计时常
+        degradeRule.setStatIntervalMs(60*1000);
+//      熔断时长
+        degradeRule.setTimeWindow(10);
+        degradeRules.add(degradeRule);
+        DegradeRuleManager.loadRules(degradeRules);
     }
 
     /**
@@ -90,6 +121,15 @@ public class TestController {
         return new User(id);
     }
 
+    @GetMapping("/degrade")
+//    @SentinelResource(value = DEGRADE_RESOURCE_NAME
+//            , entryType = EntryType.IN
+//            , blockHandler = "blockHandlerForDegrade"
+//    )
+    public User degrade(String id){
+        throw new ServiceException("异常");
+    }
+
     /**
      * public
      * 返回值 与 原方法一样
@@ -101,6 +141,12 @@ public class TestController {
         ex.printStackTrace();
         return new User("流控！"+ex.getMessage());
     }
+
+    public User blockHandlerForDegrade(String id,BlockException ex){
+        ex.printStackTrace();
+        return new User("降级熔断！"+ex.getMessage());
+    }
+
 
     public User fallbackHandlerForGetUser(String id,Throwable ex){
         ex.printStackTrace();

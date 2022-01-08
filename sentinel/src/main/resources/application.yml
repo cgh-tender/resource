@@ -10,6 +10,10 @@ spring:
     username: dev
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
 # 应用服务 WEB 访问端口
 server:
   port: 8085

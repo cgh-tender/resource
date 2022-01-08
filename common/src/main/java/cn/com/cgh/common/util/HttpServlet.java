@@ -1,6 +1,7 @@
 package cn.com.cgh.common.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -22,40 +23,48 @@ public class HttpServlet {
         return requestAttributes.getResponse();
     }
 
-    public static void print(String message,long code) {
+    public static void print(String message,long code, Integer status) {
         HttpServletResponse response = getResponse();
-        print(response,message,code);
+        print(response,message,code,status);
     }
-    public static void print(HttpServletResponse response,String message,long code) {
-        print(response, new R(code,message));
+    public static void print(HttpServletResponse response,String message,long code, Integer status) {
+        print(response, new R(code,message),status);
     }
 
-    public static void print(Object data) {
+    public static void print(Object data, Integer status) {
         HttpServletResponse response = getResponse();
-        print(response,data);
+        print(response,data,status);
     }
     /**
      * @param response
      * @param data JSONUtil.toJsonObject(data)
      */
-    public static void print(HttpServletResponse response,Object data) {
-        Writer writer = null;
+    public static void print(HttpServletResponse response,Object data, Integer status) {
+        response.setStatus(status == null ? 200 : status);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
         try {
-            response.setStatus(200);
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("application/json;charset=utf-8");
-            writer = response.getWriter();
-            writer.write(JSONObject.toJSONString(data));
-            writer.flush();
+            new ObjectMapper().writeValue(response.getWriter(),data);
         } catch (IOException e) {
-            log.error("FrontendHttpForwardUtil extend FrontendHttpAbstract.print() :" + e.getMessage());
-        }finally {
-            if (writer != null){
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                }
-            }
+            e.printStackTrace();
         }
+//        Writer writer = null;
+//        try {
+//            response.setStatus(status == null ? 200 : status);
+//            response.setCharacterEncoding("UTF-8");
+//            response.setContentType("application/json;charset=utf-8");
+//            writer = response.getWriter();
+//            writer.write(JSONObject.toJSONString(data));
+//            writer.flush();
+//        } catch (IOException e) {
+//            log.error("FrontendHttpForwardUtil extend FrontendHttpAbstract.print() :" + e.getMessage());
+//        }finally {
+//            if (writer != null){
+//                try {
+//                    writer.close();
+//                } catch (IOException e) {
+//                }
+//            }
+//        }
     }
 }
