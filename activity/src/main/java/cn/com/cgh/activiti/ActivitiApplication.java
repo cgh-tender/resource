@@ -1,9 +1,9 @@
 package cn.com.cgh.activiti;
 
+import cn.com.cgh.common.exception.EnableException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
@@ -13,8 +13,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 //        }
 //)
 @Slf4j
+@EnableException
 public class ActivitiApplication {
     public static void main(String[] args) throws InterruptedException {
-        ConfigurableApplicationContext applicationContext = SpringApplication.run(ActivitiApplication.class, args);
+        SpringApplication.run(ActivitiApplication.class, args);
     }
 }

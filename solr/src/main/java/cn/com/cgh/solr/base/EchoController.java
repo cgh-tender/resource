@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 /**
  * @author haider
  * @date 2021年12月20日 13:37
@@ -24,7 +22,8 @@ public class EchoController {
     private String port;
 
     @GetMapping(value = "/echo/{string}")
-    public String echo(@PathVariable String string) throws IOException {
+    public String echo(@PathVariable String string) {
+        int i = 1/0;
         log.info("info {}",string);
         Long a = redisTemplate.opsForValue().increment("a", 1);
         redisTemplate.delete("a");

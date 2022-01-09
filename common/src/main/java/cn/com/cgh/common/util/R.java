@@ -1,6 +1,7 @@
 package cn.com.cgh.common.util;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -9,7 +10,8 @@ import java.io.Serializable;
  * @author Haidar
  * @date 2020/12/7 20:07
  **/
-@Data
+@Getter
+@Setter
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 1000L;
     private static long sCode;
@@ -85,5 +87,15 @@ public class R<T> implements Serializable {
         apiResult.setMsg(msg);
         apiResult.setSuccess(code == 1);
         return apiResult;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "code=" + code +
+                ", success=" + success +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

@@ -4,7 +4,6 @@ package cn.com.cgh.sentinel.base;
 import cn.com.cgh.common.exception.ServiceException;
 import cn.com.cgh.sentinel.entity.User;
 import com.alibaba.csp.sentinel.Entry;
-import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
@@ -18,16 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.misc.BASE64Encoder;
 
 import javax.annotation.PostConstruct;
-import java.io.FileInputStream;
-import java.security.KeyStore;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestMapping
+@RequestMapping("/sentinel")
 @RestController
 @Slf4j
 public class TestController {

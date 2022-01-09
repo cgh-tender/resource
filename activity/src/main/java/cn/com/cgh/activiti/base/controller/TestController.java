@@ -1,6 +1,6 @@
 package cn.com.cgh.activiti.base.controller;
 
-import cn.com.cgh.solr.SolrService;
+import cn.com.cgh.activiti.service.solr.SolrService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
