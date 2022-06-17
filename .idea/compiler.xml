@@ -15,9 +15,32 @@
         <module name="activity" />
         <module name="common" />
         <module name="solr" />
+        <module name="hadoop" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authority" target="1.8" />
+      <module name="sa-token-alone-redis" target="1.8" />
+      <module name="sa-token-context-dubbo" target="1.8" />
+      <module name="sa-token-core" target="1.8" />
+      <module name="sa-token-dao-redis" target="1.8" />
+      <module name="sa-token-dao-redis-jackson" target="1.8" />
+      <module name="sa-token-dialect-thymeleaf" target="1.8" />
+      <module name="sa-token-jboot-plugin" target="1.8" />
+      <module name="sa-token-jfinal-plugin" target="1.8" />
+      <module name="sa-token-jwt" target="1.8" />
+      <module name="sa-token-oauth2" target="1.8" />
+      <module name="sa-token-parent" target="1.8" />
+      <module name="sa-token-plugin" target="1.8" />
+      <module name="sa-token-quick-login" target="1.8" />
+      <module name="sa-token-reactor-spring-boot-starter" target="1.8" />
+      <module name="sa-token-servlet" target="1.8" />
+      <module name="sa-token-solon-plugin" target="1.8" />
+      <module name="sa-token-spring-aop" target="1.8" />
+      <module name="sa-token-spring-boot-starter" target="1.8" />
+      <module name="sa-token-starter" target="1.8" />
+      <module name="sa-token-temp-jwt" target="1.8" />
       <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -26,6 +49,8 @@
       <module name="activity" options="" />
       <module name="mode" options="" />
       <module name="resource" options="-parameters" />
+      <module name="sa-token-jboot-plugin" options="-parameters" />
+      <module name="sa-token-jfinal-plugin" options="-parameters" />
       <module name="security" options="" />
       <module name="solr" options="" />
     </option>

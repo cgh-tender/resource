@@ -16,6 +16,8 @@
         <module>sentinel</module>
         <module>common</module>
         <module>file</module>
+        <module>hadoop</module>
+        <module>gateway</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -56,6 +58,7 @@
         <mysql.version>8.0.21</mysql.version>
         <commons.net.version>3.8.0</commons.net.version>
         <poi.version>5.0.0</poi.version>
+        <saToken.version>1.30.0</saToken.version>
     </properties>
 
     <dependencyManagement>
@@ -254,6 +257,47 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>${easyexcel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-reactor-spring-boot-starter</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-dao-redis-jackson</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-oauth2</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-sso</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-dao-redis</artifactId>
+                <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-alone-redis</artifactId>
+                <version>${saToken.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
