@@ -1,50 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-core/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-core/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-alone-redis/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-alone-redis/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-context-dubbo/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-context-dubbo/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dao-redis-jackson/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dao-redis-jackson/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dao-redis/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dao-redis/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dialect-thymeleaf/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-dialect-thymeleaf/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-jwt/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-jwt/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-oauth2/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-oauth2/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-quick-login/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-quick-login/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-spring-aop/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-spring-aop/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-temp-jwt/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/sa-token-temp-jwt/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-plugin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-jboot-plugin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-jboot-plugin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-jfinal-plugin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-jfinal-plugin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-reactor-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-reactor-spring-boot-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-servlet/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-servlet/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-solon-plugin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-solon-plugin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/sa-token-spring-boot-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/sa-token-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Sa-Token/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/authority/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/authority/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/file/src/main/java" charset="UTF-8" />

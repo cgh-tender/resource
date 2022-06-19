@@ -5,18 +5,40 @@ spring:
     name: gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true # 与下面的配置规则相同！ 是否启动自动识别nacos服务。
       routes:
         - id: hadoop_route # 标识路由的唯一标识，路由到 solr
           uri: http://localhost:8086 #需要转发到的地址
-          # 断言规则
+#          # 断言规则
           predicates:
             - Path=/hadoop-server/**
           filters: # http://localhost:6666/hadoop-server/echo/aaa
+            - AddRequestHeader=X-Request-color,red
             - StripPrefix=1 # 去除第一节
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allowedMethods:
+              - GET
+              - POST
+              - OPTION
+    #            - SetStatus=302
+#            - RedirectTo=302,https://baidu.com
+#            - PrefixPath=/hadoop
+
+    nacos:
+      discovery:
+        enabled: false
+#        加入 sentinel 连接sentinel 服务地址。
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
 #   http://localhost:8086/echo/aaa
 #        - id: stock_route
 
 # gateway 配置
-
 
 # 路由规则

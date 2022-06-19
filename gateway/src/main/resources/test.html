@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="aa" />
+    <button onclick="getData()" value="用户ID" type="button">用户ID</button>
+
+<script type="text/javascript">
+    function getData(){
+        $.get('http://localhost:8085/hadoop-server/echo/'+$("#aa").val(),function (a){
+            alert(a);
+        });
+    }
+</script>
+
+<script type="text/javascript" src="https://pss.bdstatic.com/r/www/cache/static/protocol/https/jquery/jquery-1.10.2.min_65682a2.js"/>
+</body>
+</html>
