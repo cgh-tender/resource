@@ -55,7 +55,7 @@
         <servletapi.version>2.3</servletapi.version>
         <javax.version>4.0.1</javax.version>
         <jsp.version>2.2</jsp.version>
-        <mysql.version>8.0.21</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <commons.net.version>3.8.0</commons.net.version>
         <poi.version>5.0.0</poi.version>
         <saToken.version>1.30.0</saToken.version>
