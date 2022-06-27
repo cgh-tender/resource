@@ -33,7 +33,7 @@
         <jackson.data.version>1.9.13</jackson.data.version>
         <fastjson.version>2.0.7</fastjson.version>
         <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.2.7.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2021.0.1.0</spring.cloud.alibaba.version>
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <spring.mvc.solr.version>4.3.12</spring.mvc.solr.version>
         <solrj.version>8.5.2</solrj.version>
@@ -59,6 +59,7 @@
         <commons.net.version>3.8.0</commons.net.version>
         <poi.version>5.0.0</poi.version>
         <saToken.version>1.30.0</saToken.version>
+        <skywalking.version>8.10.0</skywalking.version>
     </properties>
 
     <dependencyManagement>
@@ -298,6 +299,16 @@
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-alone-redis</artifactId>
                 <version>${saToken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-trace</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-logback-1.x</artifactId>
+                <version>${skywalking.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
