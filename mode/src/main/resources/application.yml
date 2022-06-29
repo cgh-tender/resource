@@ -1,11 +1,11 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # nullCatalogMeansCurrent=true ，表示mysql默认当前数据库操作，在mysql-connector-java 5.xxx该参数默认为true，在6.xxx以上默认为false
-    url: jdbc:mysql://localhost:3306/activiti?uuseUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&nullCatalogMeansCurrent=true
-    username: root
-    password: 123456
-    type: com.alibaba.druid.pool.DruidDataSource
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # nullCatalogMeansCurrent=true ，表示mysql默认当前数据库操作，在mysql-connector-java 5.xxx该参数默认为true，在6.xxx以上默认为false
+#    url: jdbc:mysql://localhost:3306/activiti?uuseUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&nullCatalogMeansCurrent=true
+#    username: root
+#    password: 123456
+#    type: com.alibaba.druid.pool.DruidDataSource
 
 server:
   port: 8882

@@ -7,9 +7,22 @@ spring:
     nacos:
       discovery:
         enabled: false
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
+      bindings:
+        output:
+          destination: test-topic
+          content-type: application/json
+        input:
+          destination: test-topic
+          content-type: application/json
+          group: test-group
 #  cloud:
 #    nacos:
 #      discovery:
 #        server-addr: 192.168.10.109:8848
 #        namespace: public
 #        password: nacos
+
