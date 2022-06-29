@@ -1,4 +1,4 @@
-package cn.com.cgh.common.util;
+package cn.com.common.util;
 
 import lombok.Getter;
 import lombok.Setter;

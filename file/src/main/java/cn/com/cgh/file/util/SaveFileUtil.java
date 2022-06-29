@@ -1,6 +1,6 @@
 package cn.com.cgh.file.util;
 
-import cn.com.cgh.common.exception.ServiceException;
+import cn.com.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;

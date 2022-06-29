@@ -1,7 +1,7 @@
-package cn.com.cgh.common.exception;
+package cn.com.common.exception;
 
-import cn.com.cgh.common.util.HttpServlet;
-import cn.com.cgh.common.util.R;
+import cn.com.common.util.HttpServlet;
+import cn.com.common.util.R;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;

@@ -1,6 +1,6 @@
 package cn.com.cgh.activiti.service.solr;
 
-import cn.com.cgh.common.util.R;
+import cn.com.common.util.R;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,7 +1,7 @@
 package cn.com.cgh.sentinel;
 
-import cn.com.cgh.common.exception.EnableException;
-import cn.com.cgh.common.exception.EnableSentinelException;
+import cn.com.common.exception.EnableException;
+import cn.com.common.exception.EnableSentinelException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

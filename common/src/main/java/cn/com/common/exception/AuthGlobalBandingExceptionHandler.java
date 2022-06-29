@@ -1,7 +1,7 @@
-package cn.com.cgh.common.exception;
+package cn.com.common.exception;
 
-import cn.com.cgh.common.util.HttpServlet;
-import cn.com.cgh.common.util.R;
+import cn.com.common.util.HttpServlet;
+import cn.com.common.util.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.BindException;

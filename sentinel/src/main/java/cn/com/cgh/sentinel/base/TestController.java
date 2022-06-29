@@ -1,7 +1,7 @@
 package cn.com.cgh.sentinel.base;
 
 
-import cn.com.cgh.common.exception.ServiceException;
+import cn.com.common.exception.ServiceException;
 import cn.com.cgh.sentinel.entity.User;
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;

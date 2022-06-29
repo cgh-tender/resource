@@ -1,4 +1,4 @@
-package cn.com.cgh.common.util;
+package cn.com.common.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

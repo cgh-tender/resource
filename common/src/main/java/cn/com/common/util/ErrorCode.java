@@ -1,4 +1,4 @@
-package cn.com.cgh.common.util;
+package cn.com.common.util;
 
 public enum ErrorCode {
     FAILED(-1, "失败"),

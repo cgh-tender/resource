@@ -1,7 +1,7 @@
 /**
  * FileName: DaoException.java
  */
-package cn.com.cgh.common.exception;
+package cn.com.common.exception;
 
 /**
  * <p>

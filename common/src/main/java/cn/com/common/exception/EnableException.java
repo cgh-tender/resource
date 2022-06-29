@@ -1,4 +1,4 @@
-package cn.com.cgh.common.exception;
+package cn.com.common.exception;
 
 import org.springframework.context.annotation.Import;
 
