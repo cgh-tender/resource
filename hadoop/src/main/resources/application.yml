@@ -26,3 +26,11 @@ spring:
 #        namespace: public
 #        password: nacos
 
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include:
+          - '*'
+      base-path: /admin
