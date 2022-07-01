@@ -44,7 +44,7 @@
         <lombok.version>1.18.12</lombok.version>
         <shiro.version>1.7.1</shiro.version>
         <javassist.version>3.24.0-GA</javassist.version>
-        <plexus.version>1.1</plexus.version>
+        <plexus.version>3.0.16</plexus.version>
         <btrace.version>1.2.3</btrace.version>
         <jol.version>0.9</jol.version>
         <easyexcel.version>2.2.6</easyexcel.version>
