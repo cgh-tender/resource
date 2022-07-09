@@ -6,6 +6,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
+ * 异步发送
  * @author haider
  * @date 2022年06月29日 17:44
  */

@@ -60,7 +60,8 @@
         <commons.net.version>3.8.0</commons.net.version>
         <poi.version>5.0.0</poi.version>
         <saToken.version>1.30.0</saToken.version>
-        <skywalking.version>8.10.0</skywalking.version>
+        <skywalking.version>8.11.0</skywalking.version>
+        <hutool.version>5.8.4</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -310,6 +311,11 @@
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-logback-1.x</artifactId>
                 <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
