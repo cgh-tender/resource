@@ -10,6 +10,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 同步发送
  * @author haider
  * @date 2022年06月29日 17:46
  */
