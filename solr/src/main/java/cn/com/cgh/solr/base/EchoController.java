@@ -1,6 +1,5 @@
 package cn.com.cgh.solr.base;
 
-import cn.com.cgh.file.util.SaveFileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,8 +22,8 @@ public class EchoController {
 
     @GetMapping(value = "/echo/{string}")
     public String echo(@PathVariable String string) {
-        int i = 1/0;
-        log.info("info {}",string);
+        int i = 1 / 0;
+        log.info("info {}", string);
         Long a = redisTemplate.opsForValue().increment("a", 1);
         redisTemplate.delete("a");
 //        File file = new File("F:\\My_Work_Base\\spring_base\\resource\\solr\\src\\main\\java\\cn\\com\\cgh\\solr\\SolrApplication.java");
@@ -34,6 +33,4 @@ public class EchoController {
 //        log.info(save.toString());
         return "Hello Nacos Discovery " + port + " " + string + " " + a;
     }
-    @Autowired
-    private SaveFileUtil saveFileUtil;
 }

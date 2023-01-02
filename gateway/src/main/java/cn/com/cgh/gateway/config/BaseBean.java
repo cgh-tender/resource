@@ -25,6 +25,5 @@ public class BaseBean {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
         source.registerCorsConfiguration("/**",configuration);
         return new CorsWebFilter(source);
-
     }
 }

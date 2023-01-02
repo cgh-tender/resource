@@ -17,6 +17,8 @@
         <module>hadoop</module>
         <module>gateway</module>
         <module>webFlux</module>
+        <module>test</module>
+        <module>id</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -32,7 +34,7 @@
         <jackson.data.version>1.9.13</jackson.data.version>
         <fastjson.version>2.0.7</fastjson.version>
         <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.2.8.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <spring.mvc.solr.version>4.3.12</spring.mvc.solr.version>
         <solrj.version>8.5.2</solrj.version>
@@ -46,13 +48,15 @@
         <btrace.version>1.2.3</btrace.version>
         <jol.version>0.9</jol.version>
         <easyexcel.version>2.2.6</easyexcel.version>
-        <activiti.version>7.1.0.M6</activiti.version>
+        <activiti.version>7.1.0.M4</activiti.version>
         <jsch.version>0.1.54</jsch.version>
         <nimbus.version>9.15.2</nimbus.version>
         <mybatis.version>2.2.0</mybatis.version>
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <druid.version>1.2.6</druid.version>
         <servletapi.version>2.3</servletapi.version>
         <javax.version>4.0.1</javax.version>
+        <servlet.version>2.5</servlet.version>
         <jsp.version>2.2</jsp.version>
         <mysql.version>8.0.21</mysql.version>
         <commons.net.version>3.8.0</commons.net.version>
@@ -60,10 +64,39 @@
         <saToken.version>1.30.0</saToken.version>
         <skywalking.version>8.11.0</skywalking.version>
         <hutool.version>5.8.4</hutool.version>
+        <net.jacob.version>1.14.3</net.jacob.version>
+        <com.jacob.version>1.10</com.jacob.version>
+        <junit.version>4.13.2</junit.version>
+        <testng.version>7.5</testng.version>
+        <nacos.version>2.1.0</nacos.version>
+        <nacos.version>2.1.0</nacos.version>
+        <nacos.version>2.1.0</nacos.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>net.sf.jacob-project</groupId>
+                <artifactId>jacob</artifactId>
+                <version>${net.jacob.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springboot.nacos</groupId>
+                <artifactId>nacos-common</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>commons-net</groupId>
                 <artifactId>commons-net</artifactId>
@@ -109,13 +142,32 @@
                 <artifactId>activiti-spring-boot-starter</artifactId>
                 <version>${activiti.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-image-generator</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti.dependencies</groupId>
+                <artifactId>activiti-dependencies</artifactId>
+                <version>${activiti.version}</version>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.jcraft</groupId>
                 <artifactId>jsch</artifactId>
@@ -184,12 +236,6 @@
                 <version>${jackson.data.version}</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--              <groupId>org.apache.tika</groupId>-->
-<!--              <artifactId>tika-parsers</artifactId>-->
-<!--              <version>${tika.version}</version>-->
-<!--            </dependency>-->
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -214,6 +260,11 @@
                 <groupId>servletapi</groupId>
                 <artifactId>servletapi</artifactId>
                 <version>${servletapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
             </dependency>
 
             <dependency>
@@ -303,11 +354,6 @@
             <dependency>
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-trace</artifactId>
-                <version>${skywalking.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.skywalking</groupId>
-                <artifactId>apm-toolkit-logback-1.x</artifactId>
                 <version>${skywalking.version}</version>
             </dependency>
 

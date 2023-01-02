@@ -1,7 +1,6 @@
 package cn.com.common.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Slf4j
 public class HttpServlet {
     public static HttpServletRequest getRequest(){
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
@@ -46,23 +44,5 @@ public class HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        Writer writer = null;
-//        try {
-//            response.setStatus(status == null ? 200 : status);
-//            response.setCharacterEncoding("UTF-8");
-//            response.setContentType("application/json;charset=utf-8");
-//            writer = response.getWriter();
-//            writer.write(JSONObject.toJSONString(data));
-//            writer.flush();
-//        } catch (IOException e) {
-//            log.error("FrontendHttpForwardUtil extend FrontendHttpAbstract.print() :" + e.getMessage());
-//        }finally {
-//            if (writer != null){
-//                try {
-//                    writer.close();
-//                } catch (IOException e) {
-//                }
-//            }
-//        }
     }
 }

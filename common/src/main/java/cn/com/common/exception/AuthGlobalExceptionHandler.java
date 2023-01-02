@@ -17,13 +17,13 @@ public class AuthGlobalExceptionHandler {
     @ExceptionHandler(value = DaoException.class)
     @ResponseBody
     public void defaultErrorHandler(HttpServletRequest req, DaoException e) throws Exception {
-        HttpServlet.print(R.failed(e.getMessage()),500);
+        HttpServlet.print(R.failed().msg(e.getMessage()),500);
     }
 
     @ExceptionHandler(value = ServiceException.class)
     @ResponseBody
     public void defaultErrorHandler(HttpServletRequest req, ServiceException e) throws Exception {
-        HttpServlet.print(R.failed(e.getMessage()),500);
+        HttpServlet.print(R.failed().msg(e.getMessage()),500);
     }
 
 }

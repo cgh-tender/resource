@@ -1,0 +1,35 @@
+server:
+  port: ${cgh.port}
+spring:
+  application:
+    name: cgh
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.111.90:8846
+      username: nacos
+      password: nacos
+      config:
+        server-addr: 192.168.111.90:8846
+        file-extension: yaml
+        prefix: ${spring.application.name}
+        namespace: public
+        refresh-enabled: true
+        extension-configs:
+          - dataId: db.yaml
+            refresh: true
+          - dataId: port.yaml
+            refresh: true
+#  datasource:
+#    druid:
+#      url: jdbc:mysql://192.168.111.90:3306/base?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+#      username: base
+#      password: 123456
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      connection-init-sqls: select 1
+#      filter:
+#        stat:
+#          enabled: true
+#          log-slow-sql: true
+
+#          merge-sql: true

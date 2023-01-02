@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class SolrServiceFallback implements SolrService {
     @Override
     public String echo(String string) {
-        return R.failed("降级了！").toString();
+        return R.failed().msg("降级了！").toString();
     }
 }

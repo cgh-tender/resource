@@ -1,0 +1,36 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # nullCatalogMeansCurrent=true ，表示mysql默认当前数据库操作，在mysql-connector-java 5.xxx该参数默认为true，在6.xxx以上默认为false
+#    url: jdbc:mysql://localhost:3305/activiti?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#    username: activiti
+#    password: activiti
+#    type: com.alibaba.druid.pool.DruidDataSource
+nacos:
+  config:
+    namespace: cgh
+    server-addr: 192.168.10.175:8848
+    data-ids: redis
+    group: common
+    type: properties
+    username: nacos
+    password: nacos
+#  activiti:
+#    database-schema-update: true
+#    db-history-used: true
+#    history-level: full
+#    check-process-definitions: true
+#    serialize-p-o-j-os-in-variables-to-json: false
+#  main:
+#    allow-bean-definition-overriding: true
+
+#logging:
+#  level:
+#    org:
+#      activiti: debug
+server:
+  port: 8888
+#mybatis:
+#  mapper-locations:
+#    - classpath*:mapper/*.xml
+

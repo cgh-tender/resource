@@ -1,21 +1,12 @@
 package cn.com.common.util;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
-/**
- * <p> 返回类型实体
- * @author Haidar
- * @date 2020/12/7 20:07
- **/
 @Getter
-@Setter
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 1000L;
-    private static long sCode;
-    private static String sMsg;
     /**
      * 返回编码
      */
@@ -36,57 +27,44 @@ public class R<T> implements Serializable {
     public R(){}
 
     public R(long code){
-        this.sCode = code;
         this.code = code;
     }
 
     public R(String msg){
-        this.sMsg = msg;
         this.msg = msg;
     }
 
     public R(long code,String msg){
-        this.sCode = code;
         this.code = code;
-        this.sMsg = msg;
         this.msg = msg;
     }
 
-    public static <T> R<T> failed(T data){
-        return restResult(data,ErrorCode.FAILED);
+    public static <T> RSource<T> failed(){
+        return (RSource<T>) restResult().msg(ErrorCode.FAILED.getMsg()).code(ErrorCode.FAILED.getCode());
     }
 
-    public static <T> R<T> failed(String msg){
-        return (R<T>) restResult(msg,ErrorCode.FAILED.setMsg(msg));
+    public static <T> RSource<T> success(T data){
+        return (RSource<T>) restResult().code(ErrorCode.SUCCESS.getCode()).msg(ErrorCode.SUCCESS.getMsg()).data(data);
     }
 
-    public static <T> R<T> failed(String msg,T data){
-        return restResult(data,ErrorCode.FAILED.setMsg(msg));
+    protected void setCode(long code) {
+        this.code = code;
     }
 
-    public static <T> R<T> success(T data){
-        return restResult(data,ErrorCode.SUCCESS);
+    protected void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public static <T> R<T> success(String msg){
-        return (R<T>) restResult(msg,ErrorCode.SUCCESS.setMsg(msg));
+    protected void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public static <T> R<T> success(String msg,T data){
-        return restResult(data,ErrorCode.SUCCESS.setMsg(msg));
+    protected void setData(T data) {
+        this.data = data;
     }
 
-    public static <T> R<T> restResult(T data, ErrorCode errorCode) {
-        return restResult(data, !"".equalsIgnoreCase(sCode+"") ? sCode : errorCode.getCode() , !"".equalsIgnoreCase(sMsg) ? sMsg : errorCode.getMsg());
-    }
-
-    private static <T> R<T> restResult(T data, long code, String msg) {
-        R<T> apiResult = new R<>();
-        apiResult.setCode(code);
-        apiResult.setData(data);
-        apiResult.setMsg(msg);
-        apiResult.setSuccess(code == 1);
-        return apiResult;
+    private static <T> RSource<T> restResult() {
+        return new RSource<T>();
     }
 
     @Override

@@ -4,12 +4,12 @@ import cn.com.cgh.activiti.service.solr.SolrService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+//import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RefreshScope // @Value 从接口调用自动变更
+//@RefreshScope // @Value 从接口调用自动变更
 public class TestController {
 
 //    private final RestTemplate restTemplate;

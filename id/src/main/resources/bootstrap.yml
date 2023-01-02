@@ -1,0 +1,25 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: id
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.111.90:8846
+      username: nacos
+      password: nacos
+      config:
+        server-addr: 192.168.111.90:8846
+        file-extension: yaml
+        prefix: ${spring.application.name}
+        namespace: public
+        refresh-enabled: true
+        extension-configs:
+          - dataId: db.yaml
+            refresh: true
+          - dataId: port.yaml
+            refresh: true
+mybatis:
+  mapper-locations:
+    - classpath*:mapper/*.xml

@@ -1,21 +1,33 @@
 package cn.com.cgh;
 
+import cn.com.cgh.activiti.ActivitiApplication;
 import org.activiti.engine.*;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = ActivitiApplication.class)
+//@AutoConfigureMockMvc
 public class TestCandidate {
+    @Test
+    public void aVoid(){
+
+    }
     @Test
     public void proper(){
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deploy = repositoryService.createDeployment()
-                .addClasspathResource("activiti/myLeave1.bpmn20.xml")
-                .name("TestCandidate")
+                .addClasspathResource("activiti/test.bpmn20.xml")
+                .name("test")
                 .deploy();
         System.out.println("deploy.getId() = " + deploy.getId());
         System.out.println("deploy.getName() = " + deploy.getName());

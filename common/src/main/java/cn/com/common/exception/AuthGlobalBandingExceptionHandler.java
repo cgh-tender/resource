@@ -23,6 +23,6 @@ public class AuthGlobalBandingExceptionHandler {
     public void exceptionHandler(BindException e)
     {
         log.info("@"+e.getBindingResult().getFieldError().getCode() + " ===> " + e.getBindingResult().getFieldError().getDefaultMessage());
-        HttpServlet.print(R.failed(e.getBindingResult().getFieldError().getDefaultMessage()),200);
+        HttpServlet.print(R.failed().msg(e.getBindingResult().getFieldError().getDefaultMessage()),200);
     }
 }

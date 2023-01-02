@@ -6,12 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
-//@RibbonClients(
-//        value = {
-//                @RibbonClient(name = "solr",configuration = RibbonRandomRuleConfig.class)
-//        }
-//)
 @Slf4j
 @EnableException
 public class ActivitiApplication {

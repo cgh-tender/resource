@@ -3,34 +3,32 @@ server:
 spring:
   application:
     name: hadoop
+#    stream:
+#      rocketmq:
+#        binder:
+#          name-server: 127.0.0.1:9876
+#      bindings:
+#        output:
+#          destination: test-topic
+#          content-type: application/json
+#        input:
+#          destination: test-topic
+#          content-type: application/json
+#          group: test-group
   cloud:
     nacos:
       discovery:
-        enabled: false
-    stream:
-      rocketmq:
-        binder:
-          name-server: 127.0.0.1:9876
-      bindings:
-        output:
-          destination: test-topic
-          content-type: application/json
-        input:
-          destination: test-topic
-          content-type: application/json
-          group: test-group
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 192.168.10.109:8848
-#        namespace: public
-#        password: nacos
+        server-addr: 192.168.111.90:8846
+        namespace: public
+        username: nacos
+        password: nacos
 
-management:
-  endpoints:
-    enabled-by-default: true
-    web:
-      exposure:
-        include:
-          - '*'
-      base-path: /admin
+
+#management:
+#  endpoints:
+#    enabled-by-default: true
+#    web:
+#      exposure:
+#        include:
+#          - '*'
+#      base-path: /admin
