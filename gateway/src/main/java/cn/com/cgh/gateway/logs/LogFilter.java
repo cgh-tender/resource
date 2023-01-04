@@ -63,8 +63,7 @@ public class LogFilter implements GlobalFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.info(exchange.getRequest().getPath().value());
-        log.info(exchange.getRequest().getLocalAddress().getAddress().getHostAddress());
+        log.info("{} {}",NetUtils.getLocalAddress(),exchange.getRequest().getPath().value());
         LogCgh logCgh = parseGateway(exchange);
         ServerHttpRequest request = exchange.getRequest();
         MediaType mediaType = request.getHeaders().getContentType();
@@ -115,7 +114,7 @@ public class LogFilter implements GlobalFilter {
     }
 
     private void report(LogCgh logCgh) {
-        logCghService.save(logCgh);
+//        logCghService.save(logCgh);
     }
 
     private Mono<Void> readFormData(ServerWebExchange exchange, GatewayFilterChain chain, LogCgh logCgh) {
