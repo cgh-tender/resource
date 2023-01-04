@@ -59,7 +59,7 @@
         <servlet.version>2.5</servlet.version>
         <jsp.version>2.2</jsp.version>
         <mysql.version>8.0.21</mysql.version>
-        <commons.net.version>3.8.0</commons.net.version>
+        <commons.net.version>3.9.0</commons.net.version>
         <poi.version>5.0.0</poi.version>
         <saToken.version>1.30.0</saToken.version>
         <skywalking.version>8.11.0</skywalking.version>
